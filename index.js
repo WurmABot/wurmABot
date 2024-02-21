@@ -192,7 +192,7 @@ client.on(Events.MessageCreate, message => {
                    message.channel.send(answer);
                 }
                 else {
-                    console.log('Error in bot-whatIs logic on line 172')
+                    console.log('Error in bot-whatIs logic on line 194')
                 }
                 
                 
@@ -257,7 +257,7 @@ client.on(Events.MessageCreate, message => {
               }
               
               else {
-                message.channel.send('I mean it is question but i can\'t understand it. (else on 210)');
+                message.channel.send('I mean it is question but i can\'t understand it. (else on 260)');
               }
             }
 
