@@ -8,7 +8,7 @@ function whatIs(content) {
     let returnString = '';
     const doc = nlp(content);
     const namedEntities = doc.match('#Noun').out('array');
-
+    
     if (namedEntities.length > 1) {
         const entity = namedEntities[0] + " " + namedEntities[1];
         const schlagwort = namedEntities.length > 0 ? namedEntities[0] : "nothing";
@@ -49,8 +49,42 @@ function whatCan(content) {
     let returnString = '';
     const doc = nlp(content);
     const namedEntities = doc.match('#Noun').out('array');
+    if (content=="what can i say" {
+        returnString="Its a complex question. But i try my best to get you an optiomal answer.\n\n";
+        returnString+="* You can me ask an "+bold ('What is (keyword)?')+" question.\n";
+        returnString+="In addition to time and date, I can there answer the following keywords:\n\n";
+        var xmend=qaMapWhatIs.size;
+        var xmc=1;
+        qaMapWhatIs.foreach((value, key) => {
+            if (xmc < xmend) {
+                returnString +=key+", ";
+            }
+            else {
+                //last entry..
+                returnString +=key+"\n";
+            }
+        });
+        returnString+="* You can me ask an "+bold ('What can (keyword)?')+" question (new).\n";
+        returnString+="I can there answer the following keywords:\n\n";
+        var xcmend=qaMapWhatCan.size;
+        var xcmc=1;
+        qaMapWhatCan.foreach((value, key) => {
+            if (xmc < xmend) {
+                returnString +=key+", ";
+            }
+            else {
+                //last entry..
+                returnString +=key+"\n";
+            }
+        }                    
+       )};
+        returnString+="\n\nI hope that answer is a little help ..\n\n";
+                            
+        
 
-    if (namedEntities.length > 1) {
+    } 
+
+    else if (namedEntities.length > 1) {
         const entity = namedEntities[0] + " " + namedEntities[1];
         const schlagwort = namedEntities.length > 0 ? namedEntities[0] : "nothing";
 
