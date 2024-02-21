@@ -1,0 +1,28 @@
+{
+  "name": "wurmABot",
+  "version": "2.0.0",
+  "description": "My DiscordBot for WurmOnline",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "register": "node dep-commands.js",
+    "unregister": "node commands-deleter.js"
+
+  },
+  "keywords": [],
+  "author": "Thorsten Lauer",
+  "license": "MIT",
+  "dependencies": {
+    "@discordjs/rest": "^2.2.0",
+    "@types/node": "^18.0.6",
+    "compromise": "^14.12.0",
+    "discord.js": "^14.14.1",
+    "node": "^20.x",
+    "node-fetch": "^3.x",
+    "utf-8-validate": "^6.0.3"
+  },
+  "devDependencies": {
+    "eslint": "^8.56.0"
+  }
+}
