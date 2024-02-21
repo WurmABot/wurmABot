@@ -86,7 +86,7 @@ function whatCan(content) {
                 returnString +=key+"\n";
             }
                            
-       )};
+        });
         returnString+="\n\nI hope that answer is a little help ..\n\n";
     } 
     else if (namedEntities.length > 1) {
