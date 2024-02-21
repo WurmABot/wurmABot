@@ -1,0 +1,13 @@
+{
+  "name": "wurmabot",
+  "version": "0.4.0",
+  "description": "My DiscordBot for WurmOnline",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "register": "node dep-commands.js"
+  },
+  "keywords": [],
+  "author": "Thorsten Lauer"
+}
