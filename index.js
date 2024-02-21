@@ -112,6 +112,20 @@ client.on(Events.MessageCreate, message => {
                   msg.delete()
                     message.channel.send(`🏓Latency is ${msg.createdTimestamp - message.createdTimestamp}ms. API Latency is                  ${Math.round(client.ws.ping)} ms`);
              });
+            if (message.content.toLowerCase() === '!exit') {
+            // Überprüfe, ob der Autor des Befehls der Bot-Ersteller ist
+              if (message.author.id === '1207593630177693746') {
+                message.channel.send('Der Bot wird heruntergefahren...')
+                .then(() => {
+                    // Beende den Bot
+                    
+                    process.exit();
+                })
+                .catch(error => {
+                    console.error('Fehler beim Herunterfahren des Bots:', error);
+                });
+              }
+              }
            } else if (message.content.toLowerCase() === 'hallo') {
                // Senden Sie eine Antwort auf die Nachricht
                message.channel.send('Hallo! Wie kann ich Ihnen helfen?');
@@ -268,18 +282,7 @@ client.on(Events.MessageCreate, message => {
           }
         else if(message.content.endsWith('!')) {
           var mString=message.content.toLowerCase();
-           if (message.content.toLowerCase() === '!exit') {
-        // Überprüfe, ob der Autor des Befehls der Bot-Ersteller ist
-          if (message.author.id === '1207593630177693746') {
-            message.channel.send('Der Bot wird heruntergefahren...')
-                .then(() => {
-                    // Beende den Bot
-                    
-                    process.exit();
-                })
-                .catch(error => {
-                    console.error('Fehler beim Herunterfahren des Bots:', error);
-                });
+          
         } else {
             message.channel.send('Du hast keine Berechtigung zum Beenden des Bots.');
         }
