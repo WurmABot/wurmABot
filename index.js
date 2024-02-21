@@ -203,7 +203,7 @@ client.on(Events.MessageCreate, message => {
           else if (mString=="how old are you") {
 		  // Bot alter und Laufzeit..
 			const createdAt = new Date(client.user.createdAt);
-		        const alter= new Date().getFullYear() - createdAt.getFullYear()) ;
+		        const alter= new Date().getFullYear() - createdAt.getFullYear();
 			const botMsg = "I am " + alter + " years old.\n I am a Bot, so I have been running for:\n";
 			const currentTime = Date.now();
 			const uptime = currentTime - startTime;
