@@ -12,6 +12,7 @@ const qaMapWhatIs = new Map([
   ['wurm online','Wurm Online is a Sandbox-MMPORG-OpenWorld-game. :woLink'],
   ['deer',':wurmpedia'],
   ['wolf',':wurmpedia'],
+  ['magic','magic is what my author is trying to do with me..\n in case of Wurm Online see this :wurmpedia'],
   ['knife',':wurmpedia'],
   ['butchering knife',':wurmpedia'],
   ['digging',':wurmpedia'],
