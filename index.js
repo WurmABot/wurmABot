@@ -161,8 +161,9 @@ client.on(Events.MessageCreate, message => {
               if (message.author.id === '361288448079822848') {
 		
                 message.channel.send('Der Bot wird heruntergefahren...')
-		client.user.setStatus('invisible');
+		
                 .then(() => {
+		    client.user.setStatus('invisible');
                     // Beende den Bot
                     process.exit();
                 })
