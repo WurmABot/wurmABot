@@ -19,7 +19,7 @@ fs.readFile(serversConfigFile, 'utf8', (err, data) => {
   if (err) return console.error(err);
   serverConfig = new Map(JSON.parse(data));
 });
-
+let messageProcessed= new Set();
 //const {qaMapWhatIs}= require('./jsmaps/questionList.default.js');
 const whatIs=require('./bot-module/whatIs.js');
 const { token } =  process.env.DISCORD_TOKEN;
@@ -99,6 +99,9 @@ client.on(Events.MessageCreate, message => {
 
            // Überprüfen, ob die Nachricht vom Bot stammt oder kein Text enthält
            if (message.author.bot || !message.content) return;
+          if (messageProcessed.has(message.id)) {
+            return;
+          } 
             let msg= message;
             let {guild} = msg;
             let wo=(guild ? guild.id : "New private message");
@@ -241,7 +244,7 @@ client.on(Events.MessageCreate, message => {
                 const seconds = Math.floor((uptime % (1000 * 60)) / 1000);
 
                 message.channel.send(botMsg+`\nMy runtime is  ${days} Days, ${hours} Hours, ${minutes} Minutes and ${seconds} Seconds`);
-
+                
               }
                else if (mString=="where are you") {
                  var thisMsg="";
@@ -278,6 +281,7 @@ client.on(Events.MessageCreate, message => {
           return;
           }
         }
+  messageProcessed.add(message.id);
            // Fügen Sie weitere Bedingungen hinzu, um auf verschiedene Nachrichten zu reagieren
  });
 
