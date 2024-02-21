@@ -58,7 +58,7 @@ function whatCan(content) {
     let returnString = '';
     const doc = nlp(content);
     const namedEntities = doc.match('#Noun').out('array');
-    if (content=="what can i say" {
+    if (content=="what can i say") {
         returnString="Its a complex question. But i try my best to get you an optiomal answer.\n\n";
         returnString+="* You can me ask an "+bold ('What is (keyword)?')+" question.\n";
         returnString+="In addition to time and date, I can there answer the following keywords:\n\n";
