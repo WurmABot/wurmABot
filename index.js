@@ -201,17 +201,26 @@ client.on(Events.MessageCreate, message => {
                 message.channel.send('At the moment all is fine here. How can i help you?');
           }
           else if (mString=="how old are you") {
-                // Bot alter und Laufzeit..
-                var botMsg="I am "+client.user.createdAt.getFullYear()-1900+" years old.\n";
-                  botMsg+="Iam a Bot also i have a runtime.\n";
-                const currentTime = Date.now();
-                const uptime = currentTime - startTime;
-                const days = Math.floor(uptime / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((uptime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((uptime % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((uptime % (1000 * 60)) / 1000);
-                message.channel.send(botMsg+`\nMy runtime is  ${days} Days, ${hours} Hours, ${minutes} Minutes and ${seconds} Seconds`);
+		  // Bot alter und Laufzeit..
+			const createdAt = new Date(client.user.createdAt);
+			const botMsg = "I am " + (new Date().getFullYear() - createdAt.getFullYear()) + " years old.\n";
+			botMsg += "I am a Bot, so I have been running for:\n";
+			const currentTime = Date.now();
+			const uptime = currentTime - startTime;
+			const days = Math.floor(uptime / (1000 * 60 * 60 * 24));
+			const hours = Math.floor((uptime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+			const minutes = Math.floor((uptime % (1000 * 60 * 60)) / (1000 * 60));
+			const seconds = Math.floor((uptime % (1000 * 60)) / 1000);
+		message.channel.send(botMsg + `My runtime is ${days} Days, ${hours} Hours, ${minutes} Minutes, and ${seconds} Seconds.`);
+
            }
+	   else if (mString=="What's your name") {
+		   var thisMsg=message.author +" thank you for the interest.\n";
+		   thisMsg+="my name is '' ".bold('WurmABot')."\n";
+		   thisMsg+="codeName '' ".bold('WurmABot2-V1.0.0')."\n";
+		   message.channel.send(thisMsg);
+		   thisMsg="";
+	   }
            else if (mString=="where are you") {
                  var thisMsg="";
                 // Bot alter und Laufzeit..
