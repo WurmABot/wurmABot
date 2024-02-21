@@ -1,3 +1,4 @@
+//hold answers in default language for whatIs and whatCan..
 const qaMapWhatIs = new Map([
   ['bot', 'A bot is a program that is designed to perform specific tasks on a server.\nIt can be used to automaticly answer questions, or to perform other tasks. Bots can be used to automate tasks, such as sending messages 🙂‍↕️'],
   ['donkey', 'Sometimes i mean my Master is a Donky - is a Joke!\nA Donkey is  an animal for ride with it or drag a cart. \nFor players, that play on a free acount: You can only ride this animal!\nThey count in Wurm Online to the animal group of the  Herbivore, grazer. You can tame, breed and groom Donkeys.\nIf you kill a donkey you can  butcher him with a Butchering knife. :wurmpedia'],
