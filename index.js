@@ -244,8 +244,9 @@ client.on(Events.MessageCreate, message => {
 
               }
                else if (mString=="where are you") {
+                 var thisMsg="";
                 // Bot alter und Laufzeit..
-                var thisMsg="As a Bot i can be hosted on a Internet-Server.\n";
+                  thisMsg+="As a Bot i can be hosted on a Internet-Server.\n";
                   thisMsg+="In this case, iam hosted on a GitHub-Cloud.\n\n";
                   thisMsg+="- My GitHub Repository: "+hyperlink('wurmabot/WurmABot','https://github.com/wurmabot/WurmABot')+"\n";
                   thisMsg+="- My GitHub Homepage: "+hyperlink('wurmabot.github.io/wurmABot','https://wurmabot.github.io/wurmABot/')+"\n";
@@ -253,7 +254,7 @@ client.on(Events.MessageCreate, message => {
                 
 
                 message.channel.send(thisMsg);
-
+                  thisMsg="";
               }
               
               else {
