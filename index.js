@@ -160,7 +160,7 @@ client.on(Events.MessageCreate, message => {
             // Überprüfe, ob der Autor des Befehls der Bot-Ersteller ist
               if (message.author.id === '361288448079822848') {
 		
-                message.channel.send('Der Bot wird heruntergefahren...')
+                message.channel.send('The Bot shutting down...')
 		
                 .then(() => {
 		    client.user.setStatus('invisible');
@@ -203,8 +203,8 @@ client.on(Events.MessageCreate, message => {
           else if (mString=="how old are you") {
 		  // Bot alter und Laufzeit..
 			const createdAt = new Date(client.user.createdAt);
-			const botMsg = "I am " + (new Date().getFullYear() - createdAt.getFullYear()) + " years old.\n";
-			botMsg += "I am a Bot, so I have been running for:\n";
+		        const alter= new Date().getFullYear() - createdAt.getFullYear()) ;
+			const botMsg = "I am " + alter + " years old.\n I am a Bot, so I have been running for:\n";
 			const currentTime = Date.now();
 			const uptime = currentTime - startTime;
 			const days = Math.floor(uptime / (1000 * 60 * 60 * 24));
@@ -233,7 +233,7 @@ client.on(Events.MessageCreate, message => {
                   thisMsg="";
 			}
             else {
-                message.channel.send('I mean it is question but i can\'t understand it. (else on 209)');
+                message.channel.send('I mean it is question but i can\'t understand it. (else on 236)');
             }
           } // end of  ? and mandatory if
         
