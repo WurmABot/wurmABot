@@ -243,6 +243,17 @@ client.on(Events.MessageCreate, message => {
                 message.channel.send(botMsg+`\nMy runtime is  ${days} Days, ${hours} Hours, ${minutes} Minutes and ${seconds} Seconds`);
 
               }
+              else if (mString=="where are you") {
+                // Bot alter und Laufzeit..
+                var thisMsg="As a Bot i can be hosted on a Internet-Server.\n";
+                  thisMsg+="In this case, iam hosted on a GitHub-Cloud.\n\n";
+                  thisMsg+="- My GitHub Repository: ".hyperlink('wurmabot/WurmABot','https://github.com/wurmabot/WurmABot')+"\n";
+                  thisMsg+="- My GitHub Homepage: ".hyperlink('wurmabot.github.io/wurmABot','https://wurmabot.github.io/wurmABot/')+"\n";
+                
+
+                message.channel.send(thisMsg);
+
+              }
               else {
                 message.channel.send('I mean it is question but i can\'t understand it. (else on 210)');
               }
