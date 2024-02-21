@@ -4,9 +4,6 @@ const learnCommand = require('./bot-module/learnCmd.js');
 const recallCommand = require('./bot-module/recallCmd.js');
 const saveLearnedContent = require('./bot-module/saveCmd.js');
 const {Client, Collection, Intents , GatewayIntentBits, Events, hyperlink, blockQuote, bold} = require('discord.js');
-//const nlp = require('compromise');
-//const {capitalize}=require('./utils.js');
-//const { findArticle } = require('./wurmpedia.mjs');
 const learnedContentFile = './sharedData/learned_content.json';
 const serversConfigFile = './sharedData/serversConfig.json';
 let learnedContent = new Map();
@@ -20,7 +17,6 @@ fs.readFile(serversConfigFile, 'utf8', (err, data) => {
   serverConfig = new Map(JSON.parse(data));
 });
 let messageProcessed= new Set();
-//const {qaMapWhatIs}= require('./jsmaps/questionList.default.js');
 const whatIs=require('./bot-module/whatIs.js');
 const { token } =  process.env.DISCORD_TOKEN;
 
@@ -96,7 +92,6 @@ client.on('guildMemberAdd', async member => {
 
 // Event-Handler für das message-Event
 client.on(Events.MessageCreate, message => {
-
            // Überprüfen, ob die Nachricht vom Bot stammt oder kein Text enthält
            if (message.author.bot || !message.content) return;
           if (messageProcessed.has(message.id)) {
@@ -104,7 +99,7 @@ client.on(Events.MessageCreate, message => {
           } 
             let msg= message;
             let {guild} = msg;
-            let wo=(guild ? guild.id : "New private message");
+            let wo=(guild ? guild.id : "DM");
             console.log('[Info] eingehende Nachricht: ['+message.content+'] | in '+wo+"/channel="+message.channel);
            // Reagieren auf die Nachricht je nach Inhalt
            if (message.content.toLowerCase() === 'ping') {
@@ -112,20 +107,18 @@ client.on(Events.MessageCreate, message => {
                   msg.delete()
                     message.channel.send(`🏓Latency is ${msg.createdTimestamp - message.createdTimestamp}ms. API Latency is                  ${Math.round(client.ws.ping)} ms`);
              });
-            if (message.content.toLowerCase() === '!exit') {
+            if (message.content.toLowerCase() === '!exit' && wo=="DM") {
             // Überprüfe, ob der Autor des Befehls der Bot-Ersteller ist
               if (message.author.id === '361288448079822848') {
                 message.channel.send('Der Bot wird heruntergefahren...')
                 .then(() => {
                     // Beende den Bot
-                    
                     process.exit();
                 })
                 .catch(error => {
                     console.error('Fehler beim Herunterfahren des Bots:', error);
                 });
               }
-            
            } else if (message.content.toLowerCase() === 'hallo') {
                // Senden Sie eine Antwort auf die Nachricht
                message.channel.send('Hallo! Wie kann ich Ihnen helfen?');
@@ -138,66 +131,40 @@ client.on(Events.MessageCreate, message => {
                   // Senden Sie eine Antwort auf die Nachricht
                   message.channel.send('Hello! How can i help you?');
             }
-             else if (message.content.toLowerCase() === 'lol') {
+            else if (message.content.toLowerCase() === 'lol') {
                    // Senden Sie eine Antwort auf die Nachricht
-               
                    message.channel.send('its look like '+message.author.tag+' is laughing');
-                                        
              }
-           else if (message.content.toLowerCase() === 'hallå') {
-        // Senden Sie eine Antwort auf die Nachricht
-            message.channel.send('Hej, hur kan jag hjälpa dig?');
-          }
-          else if(message.content.startsWith(';')) {
-            const args = msg.content.slice(1).trim().split(/ +/);
-            const command = args.shift().toLowerCase();
-            if (command === learnCommand.name) {
-              
-                learnCommand.execute(msg, args, learnedContent);
-            } else if (command === recallCommand.name) {
-                recallCommand.execute(msg, args, learnedContent);
-            }
-            else if (command==="save") {
-              const keyword = args.shift().toLowerCase();
-              if (keyword=="learned") {
-                const success = saveLearnedContent(learnedContent, learnedContentFile);
-                
-                if (success) {
-                    msg.channel.send(keyword +' saved.');
-                    console.log('Learned content saved successfully.');
-                } else {
-                    msg.channel.send('Error while saving '+keyword +'.');
-                    console.log('Failed to save learned content.');
-                }
-              }
+			else if (message.content.toLowerCase() === 'hallå') {
+				// Senden Sie eine Antwort auf die Nachricht
+				message.channel.send('Hej, hur kan jag hjälpa dig?');
+			}
+			else if(message.content.startsWith(';')) {
+				const args = msg.content.slice(1).trim().split(/ +/);
+				const command = args.shift().toLowerCase();
+				if (command === learnCommand.name) {
+					learnCommand.execute(msg, args, learnedContent);
+				} else if (command === recallCommand.name) {
+					recallCommand.execute(msg, args, learnedContent);
+				}
+				else if (command==="save") {
+					const keyword = args.shift().toLowerCase();
+					if (keyword=="learned") {
+						const success = saveLearnedContent(learnedContent, learnedContentFile);
+                        if (success) {
+							msg.channel.send(keyword +' saved.');
+							console.log('Learned content saved successfully.');
+						} else {
+							msg.channel.send('Error while saving '+keyword +'.');
+							console.log('Failed to save learned content.');
+						}
+					}
+				}
               else {
                  msg.channel.send('Can\'t saving '+keyword+'.');
               }
-              
             }
-            else {
-      
-              message.channel.send('This should be a low level command. But i don\'t get the Info what i should do with it.');
-
-            }
-            
           }
-          else if(message.content.startsWith('#')) {
-            return;
-
-          }
-          else if(message.content.startsWith('?')) {
-            message.channel.send('This should be a low level command. But i don\'t get the Info what i should do with it.');
-
-             //command type 2)
-
-            }
-            else if(message.content.startsWith('$')) {
-            message.channel.send('This should be a  variable Request. But i don\'t get the Info what i should do with it.');
-
-             //command type 2)
-
-            }
           else if(message.content.endsWith('?')) {              
             var mString=message.content.toLowerCase();
               var mString=mString.replace('?','');
@@ -209,58 +176,25 @@ client.on(Events.MessageCreate, message => {
                    message.channel.send(answer);
                 }
                 else {
-                    console.log('Error in bot-whatIs logic on line 194')
+                    console.log('Error in bot-whatIs logic on line 179')
                 }
-                
-                
-      }
-          else if (mString.startsWith('what can')) {
-                message.channel.send('This is a realy good question. (What can)');
-            }
-            else if (mString.startsWith('where can')) {
-              message.channel.send('This is a realy good question. (where can)');
-            }
-            else if (mString.startsWith()== 'where is') {
-              message.channel.send('This is a realy good question.');
-            }
-            else if (mString.startsWith()== 'how is') {
-              message.channel.send('This is a realy good question.');
-            }
-            else if (mString.startsWith()== 'how can') {
-              message.channel.send('This is a realy good question.');
-            }
-            else if (mString.startsWith()== 'can ' || mString.startsWith()=== 'can\'t ') {
-              message.channel.send('This is a realy good question.');
-            }
-            else if (mString.startsWith()== 'is ' ||  mString.startsWith()=== 'isn\'t') {
-              message.channel.send('This is a realy good question.');
-            }
-            else if (mString.startsWith()== 'why is') {
-              message.channel.send('This is a realy good question.');
-            }
-            else if (mString.startsWith()== 'how you are') {
+          }
+          else if (mString.startsWith()== 'how you are') {
                 message.channel.send('At the moment all is fine here. How can i help you?');
-            }
-            else if (mString.startsWith()=== 'which') {
-                message.channel.send('This is a realy good question.');
-              }
-            else {
-              if (mString=="how old are you") {
+          }
+          else if (mString=="how old are you") {
                 // Bot alter und Laufzeit..
                 var botMsg="I am "+client.user.createdAt.getFullYear()-1900+" years old.\n";
                   botMsg+="Iam a Bot also i have a runtime.\n";
                 const currentTime = Date.now();
                 const uptime = currentTime - startTime;
-
                 const days = Math.floor(uptime / (1000 * 60 * 60 * 24));
                 const hours = Math.floor((uptime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 const minutes = Math.floor((uptime % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((uptime % (1000 * 60)) / 1000);
-
                 message.channel.send(botMsg+`\nMy runtime is  ${days} Days, ${hours} Hours, ${minutes} Minutes and ${seconds} Seconds`);
-                
-              }
-               else if (mString=="where are you") {
+           }
+           else if (mString=="where are you") {
                  var thisMsg="";
                 // Bot alter und Laufzeit..
                   thisMsg+="As a Bot i can be hosted on a Internet-Server.\n";
@@ -268,30 +202,16 @@ client.on(Events.MessageCreate, message => {
                   thisMsg+="- My GitHub Repository: "+hyperlink('wurmabot/WurmABot','https://github.com/wurmabot/WurmABot')+"\n";
                   thisMsg+="- My GitHub Homepage: "+hyperlink('wurmabot.github.io/wurmABot','https://wurmabot.github.io/wurmABot/')+"\n";
                   thisMsg+="\nMy Main-Code-Author is Thironix from German/Trier.";
-                
-
-                message.channel.send(thisMsg);
+				  message.channel.send(thisMsg);
                   thisMsg="";
-              }
-              
-              else {
-                message.channel.send('I mean it is question but i can\'t understand it. (else on 277)');
-              }
+			}
+            else {
+                message.channel.send('I mean it is question but i can\'t understand it. (else on 209)');
             }
-
-          }
-        else if(message.content.endsWith('!')) {
-          var mString=message.content.toLowerCase();
-          
-        } else {
-            message.channel.send('Du hast keine Berechtigung zum Beenden des Bots.');
-        }
-          else {
-          return;
-          }
-        }
-  messageProcessed.add(message.id);
-           // Fügen Sie weitere Bedingungen hinzu, um auf verschiedene Nachrichten zu reagieren
+          } // end of  ? and mandatory if
+        
+		messageProcessed.add(message.id);
+        // Fügen Sie weitere Bedingungen hinzu, um auf verschiedene Nachrichten zu reagieren
  });
 
 client.login(token);
