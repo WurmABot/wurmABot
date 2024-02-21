@@ -17,7 +17,7 @@ fs.readFile(serversConfigFile, 'utf8', (err, data) => {
   serverConfig = new Map(JSON.parse(data));
 });
 let messageProcessed= new Set();
-const whatIs=require('./bot-module/whatIs.js');
+const {whatIs,whatCan}=require('./bot-module/whatIs.js');
 const { token } =  process.env.DISCORD_TOKEN;
 
 
@@ -175,7 +175,16 @@ client.on(Events.MessageCreate, message => {
               mString=mString.trim();
               if (mString.startsWith('what is')) {
                      // Reaktion auf "what is" Anfrage
-                  const answer=whatIs.whatIs(mString);
+                  const answer=whatIs(mString);
+                if(answer) {
+                   message.channel.send(answer);
+                }
+                else {
+                    console.log('Error in bot-whatIs logic on line 179')
+                }
+          }if (mString.startsWith('what can')) {
+                     // Reaktion auf "what is" Anfrage
+                  const answer=whatCan(mString);
                 if(answer) {
                    message.channel.send(answer);
                 }
