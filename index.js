@@ -170,13 +170,13 @@ client.on(Events.MessageCreate, message => {
 
           }
           else if(message.content.startsWith('?')) {
-            message.channel.send('This should be a low level command. But i don\'t get the             Info what i should do with it.');
+            message.channel.send('This should be a low level command. But i don\'t get the Info what i should do with it.');
 
              //command type 2)
 
             }
             else if(message.content.startsWith('$')) {
-            message.channel.send('This should be a  variable Request. But i don\'t get the             Info what i should do with it.');
+            message.channel.send('This should be a  variable Request. But i don\'t get the Info what i should do with it.');
 
              //command type 2)
 
@@ -243,17 +243,19 @@ client.on(Events.MessageCreate, message => {
                 message.channel.send(botMsg+`\nMy runtime is  ${days} Days, ${hours} Hours, ${minutes} Minutes and ${seconds} Seconds`);
 
               }
-              else if (mString=="where are you") {
+               else if (mString=="where are you") {
                 // Bot alter und Laufzeit..
                 var thisMsg="As a Bot i can be hosted on a Internet-Server.\n";
                   thisMsg+="In this case, iam hosted on a GitHub-Cloud.\n\n";
-                  thisMsg+="- My GitHub Repository: ".hyperlink('wurmabot/WurmABot','https://github.com/wurmabot/WurmABot')+"\n";
-                  thisMsg+="- My GitHub Homepage: ".hyperlink('wurmabot.github.io/wurmABot','https://wurmabot.github.io/wurmABot/')+"\n";
+                  thisMsg+="- My GitHub Repository: "+hyperlink('wurmabot/WurmABot','https://github.com/wurmabot/WurmABot')+"\n";
+                  thisMsg+="- My GitHub Homepage: "+hyperlink('wurmabot.github.io/wurmABot','https://wurmabot.github.io/wurmABot/')+"\n";
+                  thisMsg+="\nMy Main-Code-Author is Thironix for German/Trier.";
                 
 
                 message.channel.send(thisMsg);
 
               }
+              
               else {
                 message.channel.send('I mean it is question but i can\'t understand it. (else on 210)');
               }
