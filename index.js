@@ -107,19 +107,8 @@ client.on(Events.MessageCreate, message => {
                   msg.delete()
                     message.channel.send(`🏓Latency is ${msg.createdTimestamp - message.createdTimestamp}ms. API Latency is                  ${Math.round(client.ws.ping)} ms`);
              });
-            if (message.content.toLowerCase() == '!exit') {
-		    console.log("[Info] Eingehendes Exit userid:"+message.author.id+"|.-");
-            // Überprüfe, ob der Autor des Befehls der Bot-Ersteller ist
-              if (message.author.id === '361288448079822848') {
-                message.channel.send('Der Bot wird heruntergefahren...')
-                .then(() => {
-                    // Beende den Bot
-                    process.exit();
-                })
-                .catch(error => {
-                    console.error('Fehler beim Herunterfahren des Bots:', error);
-                });
-              }
+            
+		
            } else if (message.content.toLowerCase() == 'hallo') {
                // Senden Sie eine Antwort auf die Nachricht
                message.channel.send('Hallo! Wie kann ich Ihnen helfen?');
@@ -136,11 +125,11 @@ client.on(Events.MessageCreate, message => {
                    // Senden Sie eine Antwort auf die Nachricht
                    message.channel.send('its look like '+message.author.tag+' is laughing');
              }
-			else if (message.content.toLowerCase() == 'hallå') {
+	    else if (message.content.toLowerCase() == 'hallå') {
 				// Senden Sie eine Antwort auf die Nachricht
 				message.channel.send('Hej, hur kan jag hjälpa dig?');
-			}
-			else if(message.content.startsWith(';')) {
+	    }
+	else if(message.content.startsWith(';')) {
 				const args = msg.content.slice(1).trim().split(/ +/);
 				const command = args.shift().toLowerCase();
 				if (command === learnCommand.name) {
@@ -164,6 +153,20 @@ client.on(Events.MessageCreate, message => {
               else {
                  msg.channel.send('Can\'t saving '+keyword+'.');
               }
+		else if (command==="exit") {
+		    console.log("[Info] Eingehendes Exit userid:"+message.author.id+"|.-");
+            // Überprüfe, ob der Autor des Befehls der Bot-Ersteller ist
+              if (message.author.id === '361288448079822848') {
+                message.channel.send('Der Bot wird heruntergefahren...')
+                .then(() => {
+                    // Beende den Bot
+                    process.exit();
+                })
+                .catch(error => {
+                    console.error('Fehler beim Herunterfahren des Bots:', error);
+                });
+              }
+		}
             }
           }
           else if(message.content.endsWith('?')) {              
