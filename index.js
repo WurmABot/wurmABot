@@ -149,11 +149,11 @@ client.on(Events.MessageCreate, message => {
 							console.log('Failed to save learned content.');
 						}
 					}
-				}
-              else {
+				  else {
                  msg.channel.send('Can\'t saving '+keyword+'.');
-              }
-		else if (command==="exit") {
+					}
+				}
+				else if (command==="exit") {
 		    console.log("[Info] Eingehendes Exit userid:"+message.author.id+"|.-");
             // Überprüfe, ob der Autor des Befehls der Bot-Ersteller ist
               if (message.author.id === '361288448079822848') {
@@ -166,7 +166,7 @@ client.on(Events.MessageCreate, message => {
                     console.error('Fehler beim Herunterfahren des Bots:', error);
                 });
               }
-		}
+		
             }
           }
           else if(message.content.endsWith('?')) {              
