@@ -45,7 +45,7 @@ function whatIs(content) {
     }
     
     if (returnString.endsWith(':woLink')) {
-         returnString= returnString.replace(':woLink', '\nVisit the Homepage: ' + hyperlink('WurmOnline.com', 'https://www.wurmonline.com/'));
+        returnString= returnString.replace(':woLink', '\nVisit the Homepage: ' + hyperlink('WurmOnline.com', 'https://www.wurmonline.com/'));
      }
 
 
@@ -59,31 +59,10 @@ function whatCan(content) {
         returnString="Its a complex question. But i try my best to get you an optiomal answer.\n\n";
         returnString+="* You can me ask an "+bold ('What is (keyword)?')+" question.\n";
         returnString+="In addition to time and date, I can there answer the following keywords:\n\n";
-        var xmend=qaMapWhatIs.size;
-        var xmc=1;
-        qaMapWhatIs.foreach((value, key) => {
-            if (xmc < xmend) {
-                returnString += key+", ";
-            }
-            else {
-                //last entry..
-                returnString += key+"\n";
-            }
-        });
+        returnString += Array.from(qaMapWhatIs.keys()).join(', ') + "\n";
         returnString +="* You can me ask an "+bold ('What can (keyword)?')+" question (new).\n";
         returnString +="I can there answer the following keywords:\n\n";
-        var xcmend=qaMapWhatCan.size;
-        var xcmc=1;
-        qaMapWhatCan.foreach((value, key) => {
-            if (xmc < xmend) {
-                returnString += key +", ";
-            }
-            else {
-                //last entry..
-                returnString += key+"\n";
-            }
-                           
-        });
+        returnString += Array.from(qaMapWhatCan.keys()).join(', ') + "\n";
         returnString+="\n\nI hope that answer is a little help ..\n\n";
     } 
     else if (namedEntities.length > 1) {
