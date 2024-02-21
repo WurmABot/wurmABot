@@ -3,7 +3,6 @@ const path = require('node:path');
 const learnCommand = require('./bot-module/learnCmd.js');
 const recallCommand = require('./bot-module/recallCmd.js');
 const saveLearnedContent = require('./bot-module/saveCmd.js');
-const keepAlive =require('./keep-alive.js');
 const {Client, Collection, Intents , GatewayIntentBits, Events, hyperlink, blockQuote, bold} = require('discord.js');
 //const nlp = require('compromise');
 //const {capitalize}=require('./utils.js');
