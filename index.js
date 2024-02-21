@@ -203,7 +203,7 @@ client.on(Events.MessageCreate, message => {
           else if (mString=="how old are you") {
 		  // Bot alter und Laufzeit..
 			const createdAt = new Date(client.user.createdAt);
-		        const alter= new Date().getFullYear() - createdAt.getFullYear();
+		        const alter= (new Date().getFullYear() - createdAt.getFullYear());
 			const botMsg = "I am " + alter + " years old.\n I am a Bot, so I have been running for:\n";
 			const currentTime = Date.now();
 			const uptime = currentTime - startTime;
@@ -211,11 +211,16 @@ client.on(Events.MessageCreate, message => {
 			const hours = Math.floor((uptime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 			const minutes = Math.floor((uptime % (1000 * 60 * 60)) / (1000 * 60));
 			const seconds = Math.floor((uptime % (1000 * 60)) / 1000);
+		  var iMsg=botMsg + "My runtime is:\n"
+			 +"- " +days+" Days \n"
+			+"- "+ hours+" Hours \n"
+			  +"- "+minutes+" Minutes \n"
+			  +"- "+seconds+" Seconds.";
 		message.channel.send(botMsg + `My runtime is ${days} Days, ${hours} Hours, ${minutes} Minutes, and ${seconds} Seconds.`);
 
            }
-	   else if (mString=="What's your name") {
-		   var thisMsg=" :) "+message.author +" thank you for the interest. \n";
+	   else if (mString=="what's your name") {
+		   var thisMsg=" :) "+message.author.username +" thank you for the interest. \n";
 		   thisMsg+="my name is '' ".bold('WurmABot')+" \n";
 		   thisMsg+="codeName '' ".bold('WurmABot2-V1.0.0')+" \n";
 		   message.channel.send(thisMsg);
