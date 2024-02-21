@@ -9,6 +9,9 @@
     "register": "node dep-commands.js",
     "unregister":"node commands-deleter.js"
   },
+  "dependencies": {
+    'discord.js':"^14.14"
+  }
   "keywords": [],
   "author": "Thorsten Lauer"
 }
