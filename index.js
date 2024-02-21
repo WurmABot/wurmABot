@@ -202,15 +202,15 @@ client.on(Events.MessageCreate, message => {
           }
           else if (mString=="how old are you") {
 		  // Bot alter und Laufzeit..
-			const createdAt = new Date(client.user.createdAt);
-		        const alter= (new Date().getFullYear() - createdAt.getFullYear());
-			const botMsg = "I am " + alter + " years old.\n I am a Bot, so I have been running for:\n";
-			const currentTime = Date.now();
-			const uptime = currentTime - startTime;
-			const days = Math.floor(uptime / (1000 * 60 * 60 * 24));
-			const hours = Math.floor((uptime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-			const minutes = Math.floor((uptime % (1000 * 60 * 60)) / (1000 * 60));
-			const seconds = Math.floor((uptime % (1000 * 60)) / 1000);
+			var createdAt = new Date(client.user.createdAt);
+		        var alter= (new Date().getFullYear() - createdAt.getFullYear());
+			var botMsg = "I am " + alter + " years old.\n I am a Bot, so I have been running for:\n";
+			var currentTime = Date.now();
+			var uptime = currentTime - startTime;
+			var days = Math.floor(uptime / (1000 * 60 * 60 * 24));
+			var hours = Math.floor((uptime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+			var minutes = Math.floor((uptime % (1000 * 60 * 60)) / (1000 * 60));
+			var seconds = Math.floor((uptime % (1000 * 60)) / 1000);
 		  var iMsg=botMsg + "My runtime is:\n"
 			 +"- " +days+" Days \n"
 			+"- "+ hours+" Hours \n"
@@ -221,8 +221,8 @@ client.on(Events.MessageCreate, message => {
            }
 	   else if (mString=="what's your name") {
 		   var thisMsg=" :) "+message.author.username +" thank you for the interest. \n";
-		   thisMsg+="my name is '' ".bold('WurmABot')+" \n";
-		   thisMsg+="codeName '' ".bold('WurmABot2-V1.0.0')+" \n";
+		   thisMsg+="my name is '' "+bold('WurmABot')+" \n";
+		   thisMsg+="codeName '' "+bold('WurmABot2-V1.0.0')+" \n";
 		   message.channel.send(thisMsg);
 		   thisMsg="";
 	   }
