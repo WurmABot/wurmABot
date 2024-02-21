@@ -1,9 +1,7 @@
 const { bold, hyperlink, blockQuote } = require('discord.js');
 const nlp = require('compromise');
 const { capitalize } = require('../utils.js');
-const { WhatIs,WhatCan } = require('../jsmaps/questionList.default.js');
-const qaMapWhatCan=WhatCan;
-const qaMapWhatIs=WhatIs;
+const { qaMapWhatIs,qaMapWhatCan } = require('../jsmaps/questionList.default.js');
 //const {allList}= require ('../jsmaps/list.default.js');
 
 function whatIs(content) {
@@ -46,10 +44,9 @@ function whatIs(content) {
         returnString = 'Bot has an error in What-is Logic on whatis-File 42.';
     }
     
-        if (returnString.endsWith(':woLink')) {
-                    returnSting= returnString.replace(':woLink', '\nVisit the Homepage: ' + hyperlink('WurmOnline.com', 'https://www.wurmonline.com/'));
-                   
-    }
+    if (returnString.endsWith(':woLink')) {
+         returnString= returnString.replace(':woLink', '\nVisit the Homepage: ' + hyperlink('WurmOnline.com', 'https://www.wurmonline.com/'));
+     }
 
 
     return returnString;
@@ -66,24 +63,24 @@ function whatCan(content) {
         var xmc=1;
         qaMapWhatIs.foreach((value, key) => {
             if (xmc < xmend) {
-                returnString +=key+", ";
+                returnString += key+", ";
             }
             else {
                 //last entry..
-                returnString +=key+"\n";
+                returnString += key+"\n";
             }
         });
-        returnString+="* You can me ask an "+bold ('What can (keyword)?')+" question (new).\n";
-        returnString+="I can there answer the following keywords:\n\n";
+        returnString +="* You can me ask an "+bold ('What can (keyword)?')+" question (new).\n";
+        returnString +="I can there answer the following keywords:\n\n";
         var xcmend=qaMapWhatCan.size;
         var xcmc=1;
         qaMapWhatCan.foreach((value, key) => {
             if (xmc < xmend) {
-                returnString +=key+", ";
+                returnString += key +", ";
             }
             else {
                 //last entry..
-                returnString +=key+"\n";
+                returnString += key+"\n";
             }
                            
         });
@@ -113,10 +110,7 @@ function whatCan(content) {
                     const replacedMapA = mapA.replace(':wurmpedia', '\nSee on Wurmpedia: ' + hyperlink(schlagwort, 'https://www.wurmpedia.com/index.php/' + capitalize(schlagwort)));
                     returnString = blockQuote(replacedMapA);
                 } 
-                else if(mapA.endsWith(':woLink')) {
-                    const replacedMapA = mapA.replace(':wurmpedia', '\nSee on Wurmpedia: ' + hyperlink(schlagwort, 'https://www.wurmpedia.com/index.php/' + capitalize(schlagwort)));
-                    returnString = blockQuote(replacedMapA);
-                }
+                
                 else {
                     returnString = blockQuote(mapA);
                 }
@@ -128,7 +122,7 @@ function whatCan(content) {
         returnString = 'Bot has an error in What-is Logic on whatis-file 82.';
     }
     if (returnString.endsWith(':woLink')) {
-                    returnSting= returnString.replace(':woLink', '\nVisit the Homepage: ' + hyperlink('WurmOnline.com', 'https://www.wurmonline.com/'));
+        returnString= returnString.replace(':woLink', '\nVisit the Homepage: ' + hyperlink('WurmOnline.com', 'https://www.wurmonline.com/'));
                    
     }
     return returnString;
