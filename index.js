@@ -268,15 +268,21 @@ client.on(Events.MessageCreate, message => {
           }
         else if(message.content.endsWith('!')) {
           var mString=message.content.toLowerCase();
-          if (mString.conent.startsWith()== 'i see a') {
-             message.channel.send('I mean you will see something. But at the moment i don\'t know what i can say.');
-          }
-          else if (mString.startsWith()== 'i have a') {
-            message.channel.send('I mean owned something. But at the moment i don\'t know what i can say.');
-          }
-          else if (mString.startsWith()== 'i have a') {
-            message.channel.send('I mean owned something. But at the moment i don\'t know what i can say.');
-          }
+           if (message.content.toLowerCase() === '!exit') {
+        // Überprüfe, ob der Autor des Befehls der Bot-Ersteller ist
+          if (message.author.id === '1207593630177693746') {
+            message.channel.send('Der Bot wird heruntergefahren...')
+                .then(() => {
+                    // Beende den Bot
+                    
+                    process.exit();
+                })
+                .catch(error => {
+                    console.error('Fehler beim Herunterfahren des Bots:', error);
+                });
+        } else {
+            message.channel.send('Du hast keine Berechtigung zum Beenden des Bots.');
+        }
           else {
           return;
           }
