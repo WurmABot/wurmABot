@@ -249,7 +249,7 @@ client.on(Events.MessageCreate, message => {
                   thisMsg+="In this case, iam hosted on a GitHub-Cloud.\n\n";
                   thisMsg+="- My GitHub Repository: "+hyperlink('wurmabot/WurmABot','https://github.com/wurmabot/WurmABot')+"\n";
                   thisMsg+="- My GitHub Homepage: "+hyperlink('wurmabot.github.io/wurmABot','https://wurmabot.github.io/wurmABot/')+"\n";
-                  thisMsg+="\nMy Main-Code-Author is Thironix for German/Trier.";
+                  thisMsg+="\nMy Main-Code-Author is Thironix from German/Trier.";
                 
 
                 message.channel.send(thisMsg);
