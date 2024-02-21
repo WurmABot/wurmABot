@@ -125,7 +125,7 @@ client.on(Events.MessageCreate, message => {
                     console.error('Fehler beim Herunterfahren des Bots:', error);
                 });
               }
-              }
+            
            } else if (message.content.toLowerCase() === 'hallo') {
                // Senden Sie eine Antwort auf die Nachricht
                message.channel.send('Hallo! Wie kann ich Ihnen helfen?');
@@ -275,7 +275,7 @@ client.on(Events.MessageCreate, message => {
               }
               
               else {
-                message.channel.send('I mean it is question but i can\'t understand it. (else on 260)');
+                message.channel.send('I mean it is question but i can\'t understand it. (else on 277)');
               }
             }
 
