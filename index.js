@@ -22,7 +22,7 @@ fs.readFile(serversConfigFile, 'utf8', (err, data) => {
 
 //const {qaMapWhatIs}= require('./jsmaps/questionList.default.js');
 const whatIs=require('./bot-module/whatIs.js');
-const { token } =  process.env['DISCORD_TOKEN'];
+const { token } =  process.env.DISCORD_TOKEN;
 
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds,
