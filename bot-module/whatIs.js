@@ -34,7 +34,8 @@ function whatIs(content) {
                 if (mapA.endsWith(":wurmpedia")) {
                     const replacedMapA = mapA.replace(':wurmpedia', '\nSee on Wurmpedia: ' + hyperlink(schlagwort, 'https://www.wurmpedia.com/index.php/' + capitalize(schlagwort)));
                     returnString = blockQuote(replacedMapA);
-                } else {
+                } 
+                else {
                     returnString = blockQuote(mapA);
                 }
             } else {
@@ -44,6 +45,12 @@ function whatIs(content) {
     } else {
         returnString = 'Bot has an error in What-is Logic on whatis-File 42.';
     }
+    
+        if (returnString.endsWith(':woLink')) {
+                    returnSting= returnString.replace(':woLink', '\nVisit the Homepage: ' + hyperlink('WurmOnline.com', 'https://www.wurmonline.com/'));
+                   
+    }
+
 
     return returnString;
 }
@@ -81,11 +88,7 @@ function whatCan(content) {
         }                    
        )};
         returnString+="\n\nI hope that answer is a little help ..\n\n";
-                            
-        
-
     } 
-
     else if (namedEntities.length > 1) {
         const entity = namedEntities[0] + " " + namedEntities[1];
         const schlagwort = namedEntities.length > 0 ? namedEntities[0] : "nothing";
@@ -109,7 +112,12 @@ function whatCan(content) {
                 if (mapA.endsWith(":wurmpedia")) {
                     const replacedMapA = mapA.replace(':wurmpedia', '\nSee on Wurmpedia: ' + hyperlink(schlagwort, 'https://www.wurmpedia.com/index.php/' + capitalize(schlagwort)));
                     returnString = blockQuote(replacedMapA);
-                } else {
+                } 
+                else if(mapA.endsWith(':woLink')) {
+                    const replacedMapA = mapA.replace(':wurmpedia', '\nSee on Wurmpedia: ' + hyperlink(schlagwort, 'https://www.wurmpedia.com/index.php/' + capitalize(schlagwort)));
+                    returnString = blockQuote(replacedMapA);
+                }
+                else {
                     returnString = blockQuote(mapA);
                 }
             } else {
@@ -119,7 +127,10 @@ function whatCan(content) {
     } else {
         returnString = 'Bot has an error in What-is Logic on whatis-file 82.';
     }
-
+    if (returnString.endsWith(':woLink')) {
+                    returnSting= returnString.replace(':woLink', '\nVisit the Homepage: ' + hyperlink('WurmOnline.com', 'https://www.wurmonline.com/'));
+                   
+    }
     return returnString;
 }
 module.exports = {
