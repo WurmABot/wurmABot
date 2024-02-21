@@ -185,7 +185,7 @@ client.on(Events.MessageCreate, message => {
                    message.channel.send(answer);
                 }
                 else {
-                    console.log('Error in bot-whatIs logic on line 179')
+                    console.log('Error in bot-whatIs logic on line 187')
                 }
           }if (mString.startsWith('what can')) {
                      // Reaktion auf "what is" Anfrage
@@ -194,7 +194,7 @@ client.on(Events.MessageCreate, message => {
                    message.channel.send(answer);
                 }
                 else {
-                    console.log('Error in bot-whatIs logic on line 179')
+                    console.log('Error in bot-whatIs logic on line 196')
                 }
           }
           else if (mString.startsWith()== 'how you are') {
@@ -215,9 +215,9 @@ client.on(Events.MessageCreate, message => {
 
            }
 	   else if (mString=="What's your name") {
-		   var thisMsg=message.author +" thank you for the interest.\n";
-		   thisMsg+="my name is '' ".bold('WurmABot')."\n";
-		   thisMsg+="codeName '' ".bold('WurmABot2-V1.0.0')."\n";
+		   var thisMsg=" :) "+message.author +" thank you for the interest. \n";
+		   thisMsg+="my name is '' ".bold('WurmABot')+" \n";
+		   thisMsg+="codeName '' ".bold('WurmABot2-V1.0.0')+" \n";
 		   message.channel.send(thisMsg);
 		   thisMsg="";
 	   }
