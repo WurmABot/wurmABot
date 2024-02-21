@@ -6,6 +6,7 @@ const saveLearnedContent = require('./bot-module/saveCmd.js');
 const {Client, Collection, Intents , GatewayIntentBits, Events, hyperlink, blockQuote, bold, ActivityType } = require('discord.js');
 const learnedContentFile = './sharedData/learned_content.json';
 const serversConfigFile = './sharedData/serversConfig.json';
+const { getPageContent } = require('./bot-module/wikiApi.js');
 let learnedContent = new Map();
 let serverConfig = new Map();
 fs.readFile(learnedContentFile, 'utf8', (err, data) => {
@@ -154,11 +155,11 @@ client.on(Events.MessageCreate, message => {
 				  else {
                  msg.channel.send('Can\'t saving '+keyword+'.');
 					}
-				}
-				else if (command==="exit") {
+		}
+		else if (command==="exit") {
 		    console.log("[Info] Eingehendes Exit userid:"+message.author.id+"|.-");
-            // Überprüfe, ob der Autor des Befehls der Bot-Ersteller ist
-              if (message.author.id === '361288448079822848') {
+            	// Überprüfe, ob der Autor des Befehls der Bot-Ersteller ist
+              	if (message.author.id === '361288448079822848') {
 		
                 message.channel.send('The Bot shutting down...')
 		
@@ -173,7 +174,24 @@ client.on(Events.MessageCreate, message => {
               }
 		
             }
+	    else if (command=="getwurmpedia") {
+
+
+// Beispielaufruf der Funktion getPageContent
+	const keyword = args.shift().toLowerCase();
+
+getPageContent(keyword)
+  .then(pageContent => {
+    message.channel.send(pageContent);
+    console.log(pageContent);
+  })
+  .catch(error => {
+    console.error(error);
+  });
+
+	    }
           }
+	 
           else if(message.content.endsWith('?')) {              
             var mString=message.content.toLowerCase();
               var mString=mString.replace('?','');
