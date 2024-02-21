@@ -21,6 +21,10 @@ const qaMapWhatIs = new Map([
   
   
 ]);
+const qaMapWhatCan = new Map([
+  ['build', 'Based upon your Skill, you\'re in WurmOnline able to make many things.  🙂‍↕️ '],
+  ['cook', 'There are more than 500 recipes in Wurm Online. But you can look into your Cookbook for get a good recipe.'],
+]);
 module.exports={
-  qaMapWhatIs
+  qaMapWhatIs, qaMapWhatCan
 }
