@@ -102,12 +102,13 @@ client.on(Events.MessageCreate, message => {
             let wo=(guild ? guild.id : "DM");
             console.log('[Info] eingehende Nachricht: ['+message.content+'] | in '+wo+"/channel="+message.channel);
            // Reagieren auf die Nachricht je nach Inhalt
-           if (message.content.toLowerCase() === 'ping') {
+           if (message.content.toLowerCase() == 'ping') {
              message.channel.send('Loading data').then (async (msg) =>{
                   msg.delete()
                     message.channel.send(`🏓Latency is ${msg.createdTimestamp - message.createdTimestamp}ms. API Latency is                  ${Math.round(client.ws.ping)} ms`);
              });
-            if (message.content.toLowerCase() === '!exit') {
+            if (message.content.toLowerCase() == '!exit') {
+		    console.log("[Info] Eingehendes Exit userid:"+message.author.id+"|.-");
             // Überprüfe, ob der Autor des Befehls der Bot-Ersteller ist
               if (message.author.id === '361288448079822848') {
                 message.channel.send('Der Bot wird heruntergefahren...')
@@ -119,23 +120,23 @@ client.on(Events.MessageCreate, message => {
                     console.error('Fehler beim Herunterfahren des Bots:', error);
                 });
               }
-           } else if (message.content.toLowerCase() === 'hallo') {
+           } else if (message.content.toLowerCase() == 'hallo') {
                // Senden Sie eine Antwort auf die Nachricht
                message.channel.send('Hallo! Wie kann ich Ihnen helfen?');
            }
-          else if (message.content.toLowerCase() === 'hey bot') {
+          else if (message.content.toLowerCase() == 'hey bot') {
                   // Senden Sie eine Antwort auf die Nachricht
                   message.channel.send('Hey Bot is outdated. Please write direct your question. Thank you! You can try Hello.');
            }
-           else if (message.content.toLowerCase() === 'hello') {
+           else if (message.content.toLowerCase() == 'hello') {
                   // Senden Sie eine Antwort auf die Nachricht
                   message.channel.send('Hello! How can i help you?');
             }
-            else if (message.content.toLowerCase() === 'lol') {
+            else if (message.content.toLowerCase() == 'lol') {
                    // Senden Sie eine Antwort auf die Nachricht
                    message.channel.send('its look like '+message.author.tag+' is laughing');
              }
-			else if (message.content.toLowerCase() === 'hallå') {
+			else if (message.content.toLowerCase() == 'hallå') {
 				// Senden Sie eine Antwort auf die Nachricht
 				message.channel.send('Hej, hur kan jag hjälpa dig?');
 			}
