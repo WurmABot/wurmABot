@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "register": "node dep-commands.js"
+    "register": "node dep-commands.js",
+    "unregister":"node commands-deleter.js"
   },
   "keywords": [],
   "author": "Thorsten Lauer"
