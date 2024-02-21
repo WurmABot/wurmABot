@@ -2,6 +2,7 @@ const { bold, hyperlink, blockQuote } = require('discord.js');
 const nlp = require('compromise');
 const { capitalize } = require('../utils.js');
 const { qaMapWhatIs,qaMapWhatCan } = require('../jsmaps/questionList.default.js');
+const {allList}= require ('../jsmaps/list.default.js');
 
 function whatIs(content) {
     let returnString = '';
