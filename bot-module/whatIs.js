@@ -85,7 +85,7 @@ function whatCan(content) {
                 //last entry..
                 returnString +=key+"\n";
             }
-        }                    
+                           
        )};
         returnString+="\n\nI hope that answer is a little help ..\n\n";
     } 
