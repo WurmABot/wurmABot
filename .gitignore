@@ -130,4 +130,5 @@ dist
 .pnp.*
 
 #bot.config with tokens
-config.json
+.github/workflows/.config.json
+
