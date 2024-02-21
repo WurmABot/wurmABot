@@ -3,7 +3,7 @@ const path = require('node:path');
 const learnCommand = require('./bot-module/learnCmd.js');
 const recallCommand = require('./bot-module/recallCmd.js');
 const saveLearnedContent = require('./bot-module/saveCmd.js');
-const {Client, Collection, Intents , GatewayIntentBits, Events, hyperlink, blockQuote, bold} = require('discord.js');
+const {Client, Collection, Intents , GatewayIntentBits, Events, hyperlink, blockQuote, bold, ActivityType } = require('discord.js');
 const learnedContentFile = './sharedData/learned_content.json';
 const serversConfigFile = './sharedData/serversConfig.json';
 let learnedContent = new Map();
@@ -69,8 +69,10 @@ client.on(Events.InteractionCreate, async interaction => {
 });
 client.once('ready', () => {
    console.log('[Info] Der Bot ist bereit! user.tag: ' + client.user.tag + ', user.id: ' + client.user.id+', nickname: ' + client.user.nickname);            
-   startTime=Date.now();
-   client.user.setActivity("my code", { type: "WATCHING"})
+   //message.channel.send('WurmABot comes back!');
+  client.user.setStatus('online');
+  client.user.setActivity('my Code', { type: ActivityType.Watching });
+   //client.user.setActivity("my code", { type: "WATCHING"})
 });
 client.on('guildMemberAdd', async member => {
     const { guild } = member;
@@ -157,7 +159,9 @@ client.on(Events.MessageCreate, message => {
 		    console.log("[Info] Eingehendes Exit userid:"+message.author.id+"|.-");
             // Überprüfe, ob der Autor des Befehls der Bot-Ersteller ist
               if (message.author.id === '361288448079822848') {
+		
                 message.channel.send('Der Bot wird heruntergefahren...')
+		client.user.setStatus('invisible');
                 .then(() => {
                     // Beende den Bot
                     process.exit();
