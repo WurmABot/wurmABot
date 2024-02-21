@@ -7,12 +7,11 @@ const qaMapWhatIs = new Map([
   ['bull', 'A male kind of an Cow.\nBulls can\'t be milked, but breeding, grooming, taming and ride.\nThey can produce Meat, Fat, Tail, Hoof, Eye, Hide and Bladder when Butchering it.\nThe Bull is an animal of the Group Herbivore, Grazer. They can spawn anywhere in the world. :wurmpedia'],
   ['hell hound', 'Hellhounds aren\'t Dogs.\n They are mutch more agressiver  and stronger than Dogs. The hell hound has an extremely large aggro range, estimated at 10-20 tiles. One should have at least 40 fight skill and 50QL+ armour/weapons to take one on with the possibility of only medium wounds. Hell hounds will walk in shallow water, but do not swim. Hell hounds do slashing damage from their claws and burn damage.\n You can tame them.\mIts an animal of the Group Carnivore in Wurm Online. :wurmpedia'],
   ['dragon', 'Dragons or Dragon hitchlings apears sometimes in the wild.\nThey are agressive and stronger than Hell Hounds. They can swim. They count\'t as an unique creature.\nAs such they owns in Wurm Online there own animal Group: Dragons.'],
-   ['deed', 'Deeds are playermade Settlements. They can be found by the usage of an Deed Strake on a free Place, if you are interested you can ask the people in its local chat for join it. :wurmpedia'],
-  
+  ['deed', 'Deeds are playermade Settlements. They can be found by the usage of an Deed Strake on a free Place, if you are interested you can ask the people in its local chat for join it. :wurmpedia'],
   ['wurmpedia','Its an Wikipedia for Wurm Online.'],
   ['wurm online','Wurm Online is a Sandbox-MMPORG-OpenWorld-game. :woLink'],
   ['deer',':wurmpedia'],
-  ['wolf',':wurmpedia'],
+  ['wolf','Counts as a Mob :wurmpedia'],
   ['magic','magic is what my author is trying to do with me..\n in case of Wurm Online see this :wurmpedia'],
   ['knife',':wurmpedia'],
   ['butchering knife',':wurmpedia'],
@@ -20,11 +19,11 @@ const qaMapWhatIs = new Map([
   ['demon',':wurmpedia']
   
   
-  
 ]);
 const qaMapWhatCan = new Map([
   ['build', 'Based upon your Skill, you\'re in WurmOnline able to make many things.  🙂‍↕️ '],
   ['cook', 'There are more than 500 recipes in Wurm Online. But you can look into your Cookbook for get a good recipe.'],
+  ['dredge', 'A Dredge is a tool that you can craft selfish.\n It used for digging diggabels from deeper sea levels.\n :Wurmpedia']
 ]);
 module.exports={
   qaMapWhatIs, qaMapWhatCan
