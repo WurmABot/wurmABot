@@ -114,7 +114,7 @@ client.on(Events.MessageCreate, message => {
              });
             if (message.content.toLowerCase() === '!exit') {
             // Überprüfe, ob der Autor des Befehls der Bot-Ersteller ist
-              if (message.author.id === '1207593630177693746') {
+              if (message.author.id === '361288448079822848') {
                 message.channel.send('Der Bot wird heruntergefahren...')
                 .then(() => {
                     // Beende den Bot
