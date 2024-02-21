@@ -107,7 +107,7 @@ client.on(Events.MessageCreate, message => {
                   msg.delete()
                     message.channel.send(`🏓Latency is ${msg.createdTimestamp - message.createdTimestamp}ms. API Latency is                  ${Math.round(client.ws.ping)} ms`);
              });
-            if (message.content.toLowerCase() === '!exit' && wo=="DM") {
+            if (message.content.toLowerCase() === '!exit') {
             // Überprüfe, ob der Autor des Befehls der Bot-Ersteller ist
               if (message.author.id === '361288448079822848') {
                 message.channel.send('Der Bot wird heruntergefahren...')
