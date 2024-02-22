@@ -1,0 +1,23 @@
+name: "manueller Bot-Start"
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check for manual trigger
+        if: "!contains(github.event.head_commit.message, 'deploy-bot')"
+        run: exit 0  # Exit without executing further steps if the commit message does not contain 'deploy-bot'
+
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Start bot
+        run: node index.js
