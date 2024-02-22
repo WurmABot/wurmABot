@@ -26,8 +26,6 @@ client.on("ready", async () => {
 }));
 */
   console.log('[Info] Prefix:' + prefix+ "||"+client.commands.size+" Commands");
-  chalk.white(`Support-Server: `) +
-      chalk.red(`${supportServer.name || "None"}`)
   console.log('[Info] Support-Server:'+(`${supportServer.name || "None"}`));
   console.log("");
   console.log("——————————[Statistics]——————————");
