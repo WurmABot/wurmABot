@@ -6,6 +6,7 @@
   "scripts": {
     "test": "node .",
     "start": "node wurmABot.js"
+    "unregister": "node commands-deleter.js"
   },
   "keywords": [],
   "author": "Thorsten Lauer",
