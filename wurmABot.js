@@ -38,25 +38,26 @@ client.on(Events.MessageCreate, message => {
             		return;
           	}
 		iMsg=msg.toLowerCase();
-		/*if(iMsg === "ping") {
-    			let m = await message.channel.send("Ping?");
-    			m.edit(`Pong! Latency is ${m.createdTimestamp - 
-    			message.createdTimestamp} ms. API Latency is 
-    			${Math.round(client.ping)} ms`);
-		}
-		
-		else {
-			*/
-            		let msg= message;
+			let msg= message;
             		let {guild} = msg;
             		let wo=(guild ? guild.id : "DM");
-	
-		const rMsg="'''cyan WurmABot2.1.0alpha [core] '''\n_____\n";
-		console.log(chalk.green('[Info]')+ 'eingehende Nachricht.');
+			console.log(chalk.green('[Info]')+ 'eingehende Nachricht.');
             		logger.info(chalk.green('[Info]')+ 'eingehende Nachricht: ['+message.content+'] | in '+wo+'/channel='+message.channel);
-			rMsg +=	" [debug] you write: "+message.content +"\n";
-			message.cannel.send('Testnachricht'+rMsg);
-		//}
+	if (message.content.toLowerCase() == 'ping') {
+             message.channel.send('Loading data').then (async (msg) =>{
+                  msg.delete()
+                    message.channel.send(`🏓Latency is ${msg.createdTimestamp - message.createdTimestamp}ms. API Latency is                  ${Math.round(client.ws.ping)} ms`);
+             });
+            
+		
+           } else if (message.content.toLowerCase() == 'hallo') {
+               // Senden Sie eine Antwort auf die Nachricht
+               message.channel.send('Hallo! Wie kann ich Ihnen helfen?');
+           }
+	
+		
+		
+		
 		
 		
 		//message.channel.send(chalk.orange("Information")+"Bot RoleBack.. i run only in basic mode.\n"+chalk.orange.bold("You enter: ")+message.content);
