@@ -1,4 +1,4 @@
-const { SlashCommandBuilder,EmbedBuilder  } = require('discord.js');
+const { SlashCommandBuilder,EmbedBuilder, hyperlink  } = require('discord.js');
 const fs = require('fs');
 
 /*const dinfo ='# WurmABot - Help #\n'
@@ -39,7 +39,7 @@ const hdata= new SlashCommandBuilder();
 const hEmbed = new EmbedBuilder()
   .setColor(0x0099FF)
   .setTitle('WurmABot2 - Help')  
-  .setDescription('WurmABot2 help - This are the current possible commands, that you can run on the Bot:')
+  .setDescription('WurmABot2 help - This are the current possible commands, that you can run on the Bot:\nBut better is you look in my Wiki:'+hyperlink('WurmABot Wiki','https://github.com/WurmABot/wurmABot/wiki'))
 .setAuthor({ name: 'Thironix'})
 .addFields(
   { name: 'Topic related commands', value: cmdListA },
