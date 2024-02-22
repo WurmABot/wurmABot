@@ -19,11 +19,14 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+        
+      - name: Unregister Commands
+        run: npm unregister
+        env:
+          DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
+      
       - name: Starte bot
         run: node wurmABot.js
         env:
           DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
-      - name: Unregister Commands
-        run: node commands-deleter.js
-        env:
-          DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
+      
