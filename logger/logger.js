@@ -1,5 +1,5 @@
 const pino = require('pino');
-const logger = pino();
+//const logger = pino();
 module.exports = logger;
 const logger = pino(pino.destination({
   dest: './logger/my-file', // omit for stdout
