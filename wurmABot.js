@@ -40,7 +40,8 @@ client.on(Events.MessageCreate, message => {
 		
 			let msg= message;
             		let {guild} = msg;
-			iMsg=msg.toLowerCase();
+			var pmsg=message.content;
+			var iMsg=pmsg.toLowerCase();
             		let wo=(guild ? guild.id : "DM");
 			console.log(chalk.green('[Info]')+ 'eingehende Nachricht.');
             		logger.info(chalk.green('[Info]')+ 'eingehende Nachricht: ['+message.content+'] | in '+wo+'/channel='+message.channel);
