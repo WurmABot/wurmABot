@@ -1,7 +1,7 @@
 const { Client, Collection,Events } = require("discord.js");
 // Import Discord.Js.
 const client = new Client({ intents: 32767 });
-const chunk = require("chunk");
+const chunk = require("chalk");
 // Create a new client instance
 // When the client is ready, run this code (only once).
 // The distinction between `client: Client<boolean>` and `readyClient: Client<true>` is important for TypeScript developers.
@@ -29,7 +29,8 @@ client.on(Events.MessageCreate, message => {
             	let wo=(guild ? guild.id : "DM");
 		
             	console.log('[Info] eingehende Nachricht: ['+message.content+'] | in '+wo+"/channel="+message.channel);
-		message.channel.send(chunk.orange("Information")+"Bot RoleBack.. i run only in basic mode.\n"+chunk.orange.bold("You enter: ")+message.content);
+	
+		message.channel.send(chalk.orange("Information")+"Bot RoleBack.. i run only in basic mode.\n"+chalk.orange.bold("You enter: ")+message.content);
            // Reagieren auf die Nachricht je nach Inhalt
   messageProcessed.add(message.id);
 });
