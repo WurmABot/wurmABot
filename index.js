@@ -8,6 +8,6 @@ const manager = new ShardingManager('./wurmABot.js', {
 	shardArgs: ['--ansi', '--color'],
   token: token });
 
-manager.on('shardCreate', shard => logger.info(`Launched shard ${shard.id}`));
+manager.on('shardCreate', shard => console.log(`Launched shard ${shard.id}`));
 
 manager.spawn();
