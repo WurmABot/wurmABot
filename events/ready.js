@@ -1,4 +1,4 @@
-const client = require("../bot.js");
+const client = require("../bot");
 //const chalk = require("chalk");
 const { version: discordjsVersion } = require("discord.js");
 const { prefix } = require("../bot-config/main.json");
