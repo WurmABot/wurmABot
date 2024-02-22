@@ -10,7 +10,7 @@ client.commands = new Collection();
 client.aliases = new Collection();
 client.cooldowns = new Collection();
 client.slashCommands = new Collection();
-client.config = require("./botconfig/main.json");
+client.config = require("./bot-config/main.json");
 require("./handler")(client);
 // Initializing the project.
 
