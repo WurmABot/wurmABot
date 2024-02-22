@@ -2,7 +2,7 @@ const { Client, Collection,Events } = require("discord.js");
 // Import Discord.Js.
 const client = new Client({ intents: 32767 });
 const chalk = require("chalk");
-const logger = require('./logger');
+const logger = require('./logger/logger.js');
 // Create a new client instance
 // When the client is ready, run this code (only once).
 // The distinction between `client: Client<boolean>` and `readyClient: Client<true>` is important for TypeScript developers.
