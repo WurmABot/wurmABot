@@ -38,7 +38,7 @@ client.on(Events.MessageCreate, message => {
             		return;
           	}
 		iMsg=msg.toLowerCase();
-		if(iMsg === "ping") {
+		/*if(iMsg === "ping") {
     			let m = await message.channel.send("Ping?");
     			m.edit(`Pong! Latency is ${m.createdTimestamp - 
     			message.createdTimestamp} ms. API Latency is 
@@ -46,7 +46,7 @@ client.on(Events.MessageCreate, message => {
 		}
 		
 		else {
-		
+			*/
             		let msg= message;
             		let {guild} = msg;
             		let wo=(guild ? guild.id : "DM");
@@ -55,7 +55,7 @@ client.on(Events.MessageCreate, message => {
             		logger.info(chalk.green('[Info]')+ 'eingehende Nachricht: ['+message.content+'] | in '+wo+'/channel='+message.channel);
 			rMsg +=	" [debug] you write: "+message.content +"\n";
 			message.cannel.send(rMsg);
-		}
+		//}
 		
 		
 		//message.channel.send(chalk.orange("Information")+"Bot RoleBack.. i run only in basic mode.\n"+chalk.orange.bold("You enter: ")+message.content);
