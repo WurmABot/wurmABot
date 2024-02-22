@@ -45,10 +45,10 @@ client.on(Events.MessageCreate, message => {
             		let wo=(guild ? guild.id : "DM");
 			console.log(chalk.green('[Info]')+ 'eingehende Nachricht.');
             		logger.info(chalk.green('[Info]')+ 'eingehende Nachricht: ['+message.content+'] | in '+wo+'/channel='+message.channel);
-	if (message.content.toLowerCase() === 'ping') {
+	if (message.content.toLowerCase() === '.ping') {
              message.channel.send('Loading data').then (async (msg) =>{
                   msg.delete()
-                    message.channel.send(`🏓Latency is ${msg.createdTimestamp - message.createdTimestamp}ms. API Latency is                  ${Math.round(client.ws.ping)} ms`);
+                    message.channel.send(`🏓  `+chalk.green('Latency')+` is ${msg.createdTimestamp - message.createdTimestamp} ms \n API Latency is                  ${Math.round(client.ws.ping)} ms`);
              });
             
 		
