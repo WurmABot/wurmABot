@@ -1,13 +1,15 @@
 const client = require("../bot");
 const { MessageEmbed } = require("discord.js");
 //const chalk = require("chalk");
-//const ms = require("ms");
+const ms = require("ms");
 const { developerID } = require("../bot-config/main.json");
 const { clientavatar } = require("../bot-config/main.json");
 const { clientname } = require("../bot-config/main.json");
 const prefix = client.config.prefix;
+
 const { randomMessages_Cooldown } = require("../bot-config/main.json");
 client.on("messageCreate", async (message) => {
+try {
    if (
       message.author.bot ||
       !message.guild ||
@@ -105,6 +107,11 @@ client.on("messageCreate", async (message) => {
       }, command.cooldowns);
    }
    await command.run(client, message, args);
+   } catch (error) {
+      console.error("Error executing command:", error);
+      // Hier können Sie geeignete Maßnahmen ergreifen, z. B. eine Fehlermeldung an den Benutzer senden.
+      // Beispiel: message.reply("An error occurred while executing the command. Please try again later.");
+   }
 });
 /*
  * ———————————————[Credits]———————————————
@@ -113,7 +120,7 @@ client.on("messageCreate", async (message) => {
  * Youtube : youtube.com/DrakeZee
  * Please Help Me Reach 1k Subs DJs Codes And More Amazing * Stuff!
  * Also Add Me Friend When Using This, I Have No Friends :(
- * 
+ *
  * This Was Only Possible By Following People :
  *
  * recon#8448  | youtube.com/reconlxx | discord.gg/recon
