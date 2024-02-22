@@ -26,7 +26,9 @@ client.on("ready", async () => {
 }));
 */
   console.log('[Info] Prefix:' + prefix+ "||"+client.commands.size+" Commands");
-  console.log('[Info] Support-Server:'+{ supportServer.name || "None"});
+  chalk.white(`Support-Server: `) +
+      chalk.red(`${supportServer.name || "None"}`)
+  console.log('[Info] Support-Server:'+(`${supportServer.name || "None"}`));
   console.log("");
   console.log("——————————[Statistics]——————————");
   console.log(`Discord.js Version: ${discordjsVersion}\nRunning on Node ${process.version} on ${process.platform} ${process.arch}`);
