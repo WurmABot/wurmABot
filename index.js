@@ -3,7 +3,7 @@ const {logger}=require('./logger/logger.js');
 
 const token = process.env["DISCORD_TOKEN"] || client.config.DISCORD_TOKEN;
 
-const manager = new ShardingManager('./WurmABot.js', { 
+const manager = new ShardingManager('./wurmABot.js', { 
 	execArgv: ['--trace-warnings'],
 	shardArgs: ['--ansi', '--color'],
   token: token });
