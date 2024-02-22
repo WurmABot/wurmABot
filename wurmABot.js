@@ -1,6 +1,7 @@
 const { Client, Collection,Events } = require("discord.js");
 // Import Discord.Js.
 const client = new Client({ intents: 32767 });
+const chunk = require("chunk");
 // Create a new client instance
 // When the client is ready, run this code (only once).
 // The distinction between `client: Client<boolean>` and `readyClient: Client<true>` is important for TypeScript developers.
@@ -16,7 +17,23 @@ client.slashCommands = new Collection();
 client.bottons= new Collection();
 client.selectMenus= new Collection();
 client.config = require("./bot-config/main.json");
-
+let messageProcessed= new Set();
+client.on(Events.MessageCreate, message => {
+           // Überprüfen, ob die Nachricht vom Bot stammt oder kein Text enthält
+           	if (message.author.bot || !message.content) return;
+          	if (messageProcessed.has(message.id)) {
+            		return;
+          	}		 
+            	let msg= message;
+            	let {guild} = msg;
+            	let wo=(guild ? guild.id : "DM");
+		
+            	console.log('[Info] eingehende Nachricht: ['+message.content+'] | in '+wo+"/channel="+message.channel);
+		message.channel.send(chunk.orange("Information")+"Bot RoleBack.. i run only in basic mode.\n"+chunk.orange.bold("You enter: ")+message.content);
+           // Reagieren auf die Nachricht je nach Inhalt
+  messageProcessed.add(message.id);
+}
+	
 // ———————————————[Logging Into Client]———————————————
 const token = process.env["DISCORD_TOKEN"] || client.config.DISCORD_TOKEN;
 
