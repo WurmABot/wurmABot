@@ -1,6 +1,11 @@
-const { Client, Collection,Events } = require("discord.js");
+const { Client, Collection,Events,GatewayIntentBits } = require("discord.js");
 // Import Discord.Js.
-const client = new Client({ intents: 32767 });
+const client = new Client({ intents: [
+		GatewayIntentBits.Guilds,
+		GatewayIntentBits.GuildMessages,
+		GatewayIntentBits.MessageContent,
+		GatewayIntentBits.GuildMembers,
+	], });
 const chalk = require("chalk");
 const logger = require('./logger/logger.js');
 // Create a new client instance
