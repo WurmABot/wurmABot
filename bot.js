@@ -24,7 +24,7 @@ if(token === ""){
    console.log("Put Your Bot Token in:");
    console.log("1.) index.js On the client.login line remove client.login(token) and write client.login('Your token')");
    console.log("2.) ENV/Secrets If using replit, make new secret named 'DISCORD_TOKEN' and put your token in it else, if your using VsCode, Then Follow Some ENV tutorials (I don't suggest using it in VSC)" );
-  ]} else {
+} else {
    client.login(token);
 }
 // Login The Bot.
