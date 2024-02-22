@@ -132,4 +132,4 @@ dist
 #bot.config with tokens
 *.config.json
 
-
+old/
