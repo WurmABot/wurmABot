@@ -2,10 +2,10 @@
   "name": "wurmABot",
   "version": "2.0.0",
   "description": "My DiscordBot for WurmOnline",
-  "main": "bot.js",
+  "main": "index.js",
   "scripts": {
     "test": "node .",
-    "start": "node wurmABot.js",
+    "start": "node index.js",
     "unregister": "node commands-deleter.js"
   },
   "keywords": [],
