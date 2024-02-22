@@ -50,11 +50,12 @@ client.on(Events.MessageCreate, message => {
             		let msg= message;
             		let {guild} = msg;
             		let wo=(guild ? guild.id : "DM");
-			const rMsg="'''cyan WurmABot2.1.0alpha [core] '''\n_____\n";
-			console.log(chalk.green('[Info]')+ 'eingehende Nachricht.');
+	
+		const rMsg="'''cyan WurmABot2.1.0alpha [core] '''\n_____\n";
+		console.log(chalk.green('[Info]')+ 'eingehende Nachricht.');
             		logger.info(chalk.green('[Info]')+ 'eingehende Nachricht: ['+message.content+'] | in '+wo+'/channel='+message.channel);
 			rMsg +=	" [debug] you write: "+message.content +"\n";
-			message.cannel.send(rMsg);
+			message.cannel.send('Testnachricht'+rMsg);
 		//}
 		
 		
