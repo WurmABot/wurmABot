@@ -14,26 +14,11 @@ const logger = require('./logger/logger.js');
 // The distinction between `client: Client<boolean>` and `readyClient: Client<true>` is important for TypeScript developers.
 // It makes some properties non-nullable.
 client.once(Events.ClientReady, readyClient => {
-	logger.info(`Ready! Logged in as ${readyClient.user.tag}`);
+	console.log(chalk.green(`Ready! Logged in as ${readyClient.user.tag}`));
+	logger.info(chalk.green(`Ready! Logged in as ${readyClient.user.tag}`));
 });
 
-client.on(Events.InteractionCreate, interaction => {
-	// ...
-	if (commandName === 'stats') {
-		const promises = [
-			client.shard.fetchClientValues('guilds.cache.size'),
-			client.shard.broadcastEval(c => c.guilds.cache.reduce((acc, guild) => acc + guild.memberCount, 0)),
-		];
 
-		return Promise.all(promises)
-			.then(results => {
-				const totalGuilds = results[0].reduce((acc, guildCount) => acc + guildCount, 0);
-				const totalMembers = results[1].reduce((acc, memberCount) => acc + memberCount, 0);
-				return interaction.reply(`Server count: ${totalGuilds}\nMember count: ${totalMembers}`);
-			})
-			.catch(logger.error(error));
-	}
-});
 client.commands = new Collection();
 client.aliases = new Collection();
 client.cooldowns = new Collection();
@@ -51,15 +36,33 @@ client.on(Events.MessageCreate, message => {
 		}
           	if (messageProcessed.has(message.id)) {
             		return;
-          	}		 
-            	let msg= message;
-            	let {guild} = msg;
-            	let wo=(guild ? guild.id : "DM");
+          	}
+		msg=msg.toLowerCase();
+		if(msg === "ping") {
+    			let m = await message.channel.send("Ping?");
+    			m.edit(`Pong! Latency is ${m.createdTimestamp - 
+    			message.createdTimestamp}ms. API Latency is 
+    			${Math.round(client.ping)}ms`);
+		}
+		else if (msg==="stats")  {
+			
+		}
+		else {
 		
-            	logger.info(chalk.green('[Info]')+ 'eingehende Nachricht: ['+message.content+'] | in '+wo+'/channel='+message.channel);
-		message.channel.send('\n '+chalk.blue('WurmABot2.1.0alpha')+'-- initCode.. \nyou write: '+message.content+' --');
+            		let msg= message;
+            		let {guild} = msg;
+            		let wo=(guild ? guild.id : "DM");
+			const rMsg="'''cyan WurmABot2.1.0alpha [core] '''\n_____\n";
+	
+            		logger.info(chalk.green('[Info]')+ 'eingehende Nachricht: ['+message.content+'] | in '+wo+'/channel='+message.channel);
+			rMsg +=	" [debug] you write: "+message.content+"\n";
+		}
+		
+		
 		//message.channel.send(chalk.orange("Information")+"Bot RoleBack.. i run only in basic mode.\n"+chalk.orange.bold("You enter: ")+message.content);
            // Reagieren auf die Nachricht je nach Inhalt
+		
+  }
   messageProcessed.add(message.id);
 });
 	
