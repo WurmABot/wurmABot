@@ -55,6 +55,13 @@ client.on(Events.MessageCreate, message => {
            } else if (message.content.toLowerCase() === 'hallo') {
                // Senden Sie eine Antwort auf die Nachricht
                message.channel.send('Hallo! Wie kann ich Ihnen helfen?');
+           }else if (message.content.toLowerCase() === 'hey bot') {
+             message.channel.send('hey '+message.author).then (async (msg) =>{
+                  //msg.delete()
+                    message.channel.send(` :robot: `+chalk.blue('Iam WurmAbot')+`, what did like todo today? `);
+             });
+            
+		
            }
 	
 		else {
