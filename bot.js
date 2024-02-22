@@ -15,7 +15,7 @@ require("./handler")(client);
 // Initializing the project.
 
 // ———————————————[Logging Into Client]———————————————
-const token = process.env["DISCORD_TOKEN"] || client.config.clienttoken;
+const token = process.env["DISCORD_TOKEN"] || client.config.DISCORD_TOKEN;
 if(token === ""){
    console.log("—————————————————————————————————");
    console.log("[AntiCrash] :Invalid Token");
@@ -32,7 +32,7 @@ if(token === ""){
 process.on("unhandledRejection", (reason, p) => {
    console.log("—————————————————————————————————");
    console.log("[AntiCrash] : Unhandled Rejection/Catch");
-   console.log("—————————————————————————————————"));
+   console.log("—————————————————————————————————");
    console.log(reason, p);
 });
 process.on("uncaughtException", (err, origin) => {
@@ -44,6 +44,6 @@ process.on("uncaughtException", (err, origin) => {
 process.on("multipleResolves", (type, promise, reason) => {
    console.log("—————————————————————————————————");
    console.log("[AntiCrash] : Multiple Resolves");
-    console.log("—————————————————————————————————"));
+    console.log("—————————————————————————————————");
    console.log(type, promise, reason);
 });
