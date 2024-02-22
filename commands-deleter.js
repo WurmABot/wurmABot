@@ -1,7 +1,7 @@
 const { REST, Routes } = require('discord.js');
 
 const token = process.env['DISCORD_TOKEN'];
-client.config = require("./bot-config/main.json");
+const config = require("./bot-config/main.json");
 
 const clientId = config.clientid;
 const guildId= config.TestingServerID;
