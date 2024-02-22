@@ -1,4 +1,4 @@
-const client = require("../index");
+const client = require("../bot.js");
 const { MessageEmbed } = require("discord.js");
 //const chalk = require("chalk");
 //const ms = require("ms");
