@@ -1,4 +1,4 @@
-name: Bot Installer
+name: Bot ENV-Installer
 
 on:
   push:
