@@ -8,6 +8,7 @@ const client = new Client({ intents: [
 	], });
 const chalk = require("chalk");
 const logger = require('./logger/logger.js');
+
 // Create a new client instance
 // When the client is ready, run this code (only once).
 // The distinction between `client: Client<boolean>` and `readyClient: Client<true>` is important for TypeScript developers.
@@ -17,15 +18,22 @@ client.once(Events.ClientReady, readyClient => {
 });
 
 client.on(Events.InteractionCreate, interaction => {
-	if (!interaction.isChatInputCommand()) return;
-
-	const { commandName } = interaction;
-
+	// ...
 	if (commandName === 'stats') {
-		return interaction.reply(`Server count: ${client.guilds.cache.size}.`);
+		const promises = [
+			client.shard.fetchClientValues('guilds.cache.size'),
+			client.shard.broadcastEval(c => c.guilds.cache.reduce((acc, guild) => acc + guild.memberCount, 0)),
+		];
+
+		return Promise.all(promises)
+			.then(results => {
+				const totalGuilds = results[0].reduce((acc, guildCount) => acc + guildCount, 0);
+				const totalMembers = results[1].reduce((acc, memberCount) => acc + memberCount, 0);
+				return interaction.reply(`Server count: ${totalGuilds}\nMember count: ${totalMembers}`);
+			})
+			.catch(logger.error(error));
 	}
 });
-
 client.commands = new Collection();
 client.aliases = new Collection();
 client.cooldowns = new Collection();
@@ -75,20 +83,20 @@ if(token === ""){
 // Login The Bot.
 // ———————————————[Error Handling]———————————————
 process.on("unhandledRejection", (reason, p) => {
-   logger.info("—————————————————————————————————");
-   logger.info("[AntiCrash] : Unhandled Rejection/Catch");
-   logger.info("—————————————————————————————————");
-   logger.info(reason, p);
+   logger.error("—————————————————————————————————");
+   logger.error("[AntiCrash] : Unhandled Rejection/Catch");
+   logger.error("—————————————————————————————————");
+   logger.error(reason, p);
 });
 process.on("uncaughtException", (err, origin) => {
-   logger.info("—————————————————————————————————");
-   logger.info("[AntiCrash] : Uncaught Exception/Catch");
-   logger.info("—————————————————————————————————");
-   logger.info(err, origin);
+   logger.error("—————————————————————————————————");
+   logger.error("[AntiCrash] : Uncaught Exception/Catch");
+   logger.error("—————————————————————————————————");
+   logger.error(err, origin);
 });
 process.on("multipleResolves", (type, promise, reason) => {
-   logger.info("—————————————————————————————————");
-   logger.info("[AntiCrash] : Multiple Resolves");
-   logger.info("—————————————————————————————————");
-   logger.info(type, promise, reason);
+   logger.error("—————————————————————————————————");
+   logger.error("[AntiCrash] : Multiple Resolves");
+   logger.error("—————————————————————————————————");
+   logger.error(type, promise, reason);
 });
