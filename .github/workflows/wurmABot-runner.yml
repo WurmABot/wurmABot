@@ -21,7 +21,7 @@ jobs:
 
         
       - name: Unregister Commands
-        run: npm unregister
+        run: npm run unregister
         env:
           DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
       
