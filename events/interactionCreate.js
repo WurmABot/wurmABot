@@ -1,4 +1,4 @@
-const client = require("../bot.js");
+const client = require("../bot");
 
 client.on("interactionCreate", async (interaction) => {
    // ———————————————[Slash Commands]———————————————
