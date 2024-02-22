@@ -11,7 +11,8 @@ git add
 git commit
 ```
 ### About WurmABot
-*WurmABot/wurmABot** is a Bot based on Discord.js for Node.js. It's special Designe for Discord-Servers with orientation to [WurmOnline](https://www.wurmonline.com/) - A Sandbox-MMPORG made by CodeClub AB.
+**WurmABot/wurmABot** is a Bot based on Discord.js for Node.js. It's special Designe for Discord-Servers with orientation to [WurmOnline](https://www.wurmonline.com/) - A Sandbox-MMPORG made by CodeClub AB.
+It require Node.js for run.
 
 <!--
 **WurmABot/wurmABot** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
