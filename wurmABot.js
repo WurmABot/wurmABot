@@ -14,7 +14,7 @@ const logger = require('./logger/logger.js');
 // The distinction between `client: Client<boolean>` and `readyClient: Client<true>` is important for TypeScript developers.
 // It makes some properties non-nullable.
 client.once(Events.ClientReady, readyClient => {
-	console.log(chalk.green(`Ready! Logged in as ${readyClient.user.tag}`));
+	console.log(chalk.green(`[Info]`)+" Ready! Logged in as ${readyClient.user.tag}`));
 	logger.info(chalk.green(`Ready! Logged in as ${readyClient.user.tag}`));
 });
 
