@@ -1,4 +1,4 @@
-name: Bot Workflow
+name: Bot Installer
 
 on:
   push:
@@ -19,9 +19,4 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-
-      - name: Run bot
-        run: node index.js
-        env:
-          DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
           
