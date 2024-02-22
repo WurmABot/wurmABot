@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "node .",
-    "start": "node bot.js",
+    "start": "node bot.js"
   },
   "keywords": [],
   "author": "Thorsten Lauer",
