@@ -15,7 +15,7 @@ client.on("ready", async () => {
     { type: "WATCHING" }
   );
   // ———————————————[Ready MSG]———————————————
-  console.log("[Info] Success!"));
+  console.log("[Info] Success!");
   console.log("[Info] Connected to ${client.user.tag}`);
   /*console.log("[Info] Watching ",({
     client.guilds.cache.reduce((a, b) => a + b.memberCount, 0)),
