@@ -10,6 +10,8 @@ client.commands = new Collection();
 client.aliases = new Collection();
 client.cooldowns = new Collection();
 client.slashCommands = new Collection();
+client.bottons= new Collection();
+client.selectMenus= new Collection();
 client.config = require("./bot-config/main.json");
 require("./handler")(client);
 // Initializing the project.
