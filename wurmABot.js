@@ -32,7 +32,7 @@ client.on(Events.MessageCreate, message => {
 		message.channel.send(chunk.orange("Information")+"Bot RoleBack.. i run only in basic mode.\n"+chunk.orange.bold("You enter: ")+message.content);
            // Reagieren auf die Nachricht je nach Inhalt
   messageProcessed.add(message.id);
-}
+});
 	
 // ———————————————[Logging Into Client]———————————————
 const token = process.env["DISCORD_TOKEN"] || client.config.DISCORD_TOKEN;
