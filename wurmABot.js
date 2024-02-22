@@ -34,7 +34,7 @@ client.on(Events.MessageCreate, message => {
             	let wo=(guild ? guild.id : "DM");
 		
             	logger.info(chalk.green('[Info]')+ 'eingehende Nachricht: ['+message.content+'] | in '+wo+'/channel='+message.channel);
-		message.channel.send('\n '+chalk.blue)+'WurmABot2.1.0alpha'+' initCode.. \nyou write:'+message.content+' --');
+		message.channel.send('\n '+chalk.blue('WurmABot2.1.0alpha')+'-- initCode.. \nyou write: '+message.content+' --');
 		//message.channel.send(chalk.orange("Information")+"Bot RoleBack.. i run only in basic mode.\n"+chalk.orange.bold("You enter: ")+message.content);
            // Reagieren auf die Nachricht je nach Inhalt
   messageProcessed.add(message.id);
