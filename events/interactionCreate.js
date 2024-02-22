@@ -27,9 +27,15 @@ client.on("interactionCreate", async (interaction) => {
    }
    // ———————————————[Buttons]———————————————
    if (interaction.isButton()) {
+      await interaction.deferReply({ ephemeral: false });
+      const command = client.Buttons.get(interaction.commandName);
+      if (command) command.run(client, interaction);
    }
    // ———————————————[Select Menu]———————————————
    if (interaction.isSelectMenu()) {
+      await interaction.deferReply({ ephemeral: false });
+      const command = client.selectMenus.get(interaction.commandName);
+      if (command) command.run(client, interaction);
    }
    // ———————————————[Context Menu]———————————————
    if (interaction.isContextMenu()) {
