@@ -2,7 +2,7 @@ const { glob } = require("glob");
 const { promisify } = require("util");
 const { Client } = require("discord.js");
 const globPromise = promisify(glob);
-const mainjson = require("../botconfig/main.json");
+const mainjson = require("../bot-config/main.json");
 
 module.exports = async (client) => {
   // ———————————————[Commands]———————————————
