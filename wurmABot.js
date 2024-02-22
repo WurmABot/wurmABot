@@ -1,7 +1,7 @@
 const { Client, Collection,Events } = require("discord.js");
 // Import Discord.Js.
 const client = new Client({ intents: 32767 });
-const chunk = require("chalk");
+const chalk = require("chalk");
 // Create a new client instance
 // When the client is ready, run this code (only once).
 // The distinction between `client: Client<boolean>` and `readyClient: Client<true>` is important for TypeScript developers.
@@ -15,6 +15,7 @@ client.aliases = new Collection();
 client.cooldowns = new Collection();
 client.slashCommands = new Collection();
 client.bottons= new Collection();
+client.messages= new Collection();
 client.selectMenus= new Collection();
 client.config = require("./bot-config/main.json");
 let messageProcessed= new Set();
@@ -28,8 +29,8 @@ client.on(Events.MessageCreate, message => {
             	let {guild} = msg;
             	let wo=(guild ? guild.id : "DM");
 		
-            	console.log('[Info] eingehende Nachricht: ['+message.content+'] | in '+wo+"/channel="+message.channel);
-	
+            	console.log(chalk.green('[Info]')+ 'eingehende Nachricht: ['+message.content+'] | in '+wo+"/channel="+message.channel);
+		message.channel.send('\n WurmABot2.1.0alpha initCode..');
 		message.channel.send(chalk.orange("Information")+"Bot RoleBack.. i run only in basic mode.\n"+chalk.orange.bold("You enter: ")+message.content);
            // Reagieren auf die Nachricht je nach Inhalt
   messageProcessed.add(message.id);
