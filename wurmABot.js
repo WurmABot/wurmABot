@@ -37,16 +37,14 @@ client.on(Events.MessageCreate, message => {
           	if (messageProcessed.has(message.id)) {
             		return;
           	}
-		msg=msg.toLowerCase();
-		if(msg === "ping") {
+		iMsg=msg.toLowerCase();
+		if(iMsg === "ping") {
     			let m = await message.channel.send("Ping?");
     			m.edit(`Pong! Latency is ${m.createdTimestamp - 
-    			message.createdTimestamp}ms. API Latency is 
-    			${Math.round(client.ping)}ms`);
+    			message.createdTimestamp} ms. API Latency is 
+    			${Math.round(client.ping)} ms`);
 		}
-		else if (msg==="stats")  {
-			
-		}
+		
 		else {
 		
             		let msg= message;
@@ -55,7 +53,8 @@ client.on(Events.MessageCreate, message => {
 			const rMsg="'''cyan WurmABot2.1.0alpha [core] '''\n_____\n";
 	
             		logger.info(chalk.green('[Info]')+ 'eingehende Nachricht: ['+message.content+'] | in '+wo+'/channel='+message.channel);
-			rMsg +=	" [debug] you write: "+message.content+"\n";
+			rMsg +=	" [debug] you write: "+message.content +"\n";
+			message.cannel.send(rMsg);
 		}
 		
 		
