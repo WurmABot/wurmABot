@@ -21,3 +21,5 @@ jobs:
 
       - name: Start bot
         run: node index.js
+        env:
+          DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
