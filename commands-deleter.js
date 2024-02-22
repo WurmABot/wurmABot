@@ -1,8 +1,9 @@
 const { REST, Routes } = require('discord.js');
 
 const token = process.env['DISCORD_TOKEN'];
-const clientId = process.env['CLIENT_ID'];
-const guildId= process.env['GUILD_ID'];
+client.config = require("./bot-config/main.json");
+const clientId = config.CLIENT_ID;
+const guildId= config.GUILD_ID;
 
 const rest = new REST().setToken(token);
 console.log('[Info] Start for deletion all commands..');
