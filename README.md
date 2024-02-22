@@ -15,7 +15,7 @@ git commit
 
 It require Node.js for run. 
 
-Branch: [/WurmABot/wurmABot]
+
 
 <!--
 **WurmABot/wurmABot** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
