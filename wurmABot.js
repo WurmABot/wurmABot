@@ -1,4 +1,4 @@
-const { Client, Collection } = require("discord.js");
+const { Client, Collection,Events } = require("discord.js");
 // Import Discord.Js.
 const client = new Client({ intents: 32767 });
 // Create a new client instance
