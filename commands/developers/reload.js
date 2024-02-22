@@ -1,6 +1,6 @@
 const { MessageEmbed } = require("discord.js");
 const glob = require("glob");
-const { clientname, clientavatar } = require("../../botconfig/main.json");
+const { clientname, clientavatar } = require("../../bot-config/main.json");
 module.exports = {
    name: "reload",
    cooldowns: 3000,
@@ -20,7 +20,7 @@ module.exports = {
             const pull = require(file);
             if (pull.name) {
                console.log("✪ Reloaded \`"+pull.name+"\` Command");
-               );
+               
                client.commands.set(pull.name, pull);
             }
 
