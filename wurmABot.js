@@ -16,6 +16,16 @@ client.once(Events.ClientReady, readyClient => {
 	logger.info(`Ready! Logged in as ${readyClient.user.tag}`);
 });
 
+client.on(Events.InteractionCreate, interaction => {
+	if (!interaction.isChatInputCommand()) return;
+
+	const { commandName } = interaction;
+
+	if (commandName === 'stats') {
+		return interaction.reply(`Server count: ${client.guilds.cache.size}.`);
+	}
+});
+
 client.commands = new Collection();
 client.aliases = new Collection();
 client.cooldowns = new Collection();
