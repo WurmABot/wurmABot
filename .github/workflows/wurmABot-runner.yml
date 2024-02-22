@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check for manual trigger
-        if: "!contains(github.event.head_commit.message, 'deploy-bot')"
+        if: "!contains(github.event.head_commit.message, 'run-bot')"
         run: exit 0  # Exit without executing further steps if the commit message does not contain 'deploy-bot'
 
       - name: Checkout repository
