@@ -76,7 +76,7 @@ client.on(Events.MessageCreate, message => {
     		}, 3000); // 3000 Millisekunden entsprechen 3 Sekunden
   	});
 
-  	message.channel.send(bMsg);
+  	
     // Weitere Analysen und Aktionen können hier hinzugefügt werden
   }
 	
