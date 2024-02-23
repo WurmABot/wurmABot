@@ -33,16 +33,20 @@ function heyBot(todo,inMsg,inGuild) {
 	var what=inMsg.content;
 	var doc=nlp(what);
 	let todoN = doc.after('^simon says')
-	const dout=doc.out('array');
-  	const topics= doc.topics().out('array');
-	const adjectives=doc.adjectives().out('array');
-	const verbs= doc.verbs().out('array');
-	const nouns= doc.nouns().out('array');
-	const acronyms=doc.acronyms().out('array');
-	const conjunctions=doc.conjunctions().out('array');
-	//var action = doc.verbs.normalize(); //doing what?
-	let action1 = doc.verbs(0).normalize() //doing what?
-	let action2 = doc.verbs(1).normalize() //doing what?
+	const dout=todoN.out('array');
+  	const topics= todoN.topics().out('array');
+	const adjectives=todoN.adjectives().out('array');
+	const verbs= todoN.verbs().out('array');
+	const nouns= todoN.nouns().out('array');
+	const acronyms=todoN.acronyms().out('array');
+	const conjunctions=todoN.conjunctions().out('array');
+	let action = todoN.verbs(0).normalize()
+	let action1 = action.conjugate()[0].toGerund();
+	let action2 = action.conjugate()[1].toGerund();
+	
+	
+	
+	
     
     rMsg='My teacher didn\'t explain to me how to do it';
     switch (action1) {
