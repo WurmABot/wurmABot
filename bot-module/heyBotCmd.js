@@ -29,19 +29,15 @@ loadData("gsData");
 
 function heyBot(todo,inMsg,inGuild) {
     loadData('gsData');
-	ilog.info('[Hey Bot] call, todo:'+todo+', inMsg: '+inMsg.content);
-	var what=inMsg.content.toLowerCase();
-	var todoN=what.replace('hey bot,','');
-    
-    var doc=nlp(todoN);
-    
-
-
+	ilog.info('[Hey Bot] call, todo:'+todo.join(', ')+', inMsg: '+inMsg.content);
+	var what=inMsg.content;
+	var doc=nlp(todoN);
+	let todoN = doc.after('^simon says')
 	const dout=doc.out('array');
   	const topics= doc.topics().out('array');
 	const adjectives=doc.adjectives().out('array');
 	const verbs= doc.verbs().out('array');
-	const nouns= docx.nouns().out('array');
+	const nouns= doc.nouns().out('array');
 	const acronyms=doc.acronyms().out('array');
 	const conjunctions=doc.conjunctions().out('array');
 	var action = doc.verbs.normalize(); //doing what?
