@@ -45,10 +45,6 @@ function heyBot(todo,inMsg,inGuild) {
 	//let action1 = action.conjugate()[0].Gerund;
 	//let action2 = action.conjugate()[1].toGerund();
 	
-	
-	
-	
-    
     rMsg='My teacher didn\'t explain to me how to do it';
 var showDevInfo=false;
     switch (action2) {
@@ -84,7 +80,7 @@ var showDevInfo=false;
   	inMsg.channel.send(" :robot: WurmABot thinks...").then(() => {
     		// Verzögere die Antwort um 3 Sekunden
     		setTimeout(() => {
-	if (showDevInf==true) {
+	if (showDevInfo==true) {
 		var bMsg = 'your message contains the follow:\n';
         bMsg +='todo-selector is: '+action2+' \n';
         bMsg +="___ \n";
