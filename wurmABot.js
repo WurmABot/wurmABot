@@ -9,7 +9,7 @@ const client = new Client({ intents: [
 const chalk = require("chalk");
 const logger = require('./logger/logger.js');
 const nlp = require("compromise");
-const heyBot = require('./bot-module/heyBotCmd.js'); // the message ai of the bot...
+const {heyBot} = require('./bot-module/heyBotCmd.js'); // the message ai of the bot...
 // Create a new client instance
 // When the client is ready, run this code (only once).
 // The distinction between `client: Client<boolean>` and `readyClient: Client<true>` is important for TypeScript developers.
