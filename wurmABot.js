@@ -62,14 +62,18 @@ client.on(Events.MessageCreate, message => {
   	}
   
   	const doc = nlp(textToAnalyze);
-  	const topics = doc.topics().out('array').join(', ');
+  	const topics= doc.topics().out('array');
+	const verbs= doc.verbs().out('array');
+	const nouns= doc.nouns().out('array');
   	
 	  // Bot denkt nach...
   	message.channel.send(" :robot: WurmABot thinks...").then(() => {
     		// Verzögere die Antwort um 3 Sekunden
     		setTimeout(() => {
       		const doc = nlp(textToAnalyze);
-      		bMsg += topics;
+      		bMsg += 'topics: '+topics.join(', ')+'\n';
+		bMsg += 'verbs: '+verbs.join(', ')+'\n';
+		bMsg += 'nouns: '+nouns.join(', ')+'\n';
 
       		message.channel.send(bMsg);
     		}, 3000); // 3000 Millisekunden entsprechen 3 Sekunden
