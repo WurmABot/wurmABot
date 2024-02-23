@@ -147,20 +147,26 @@ if(token === ""){
 // Login The Bot.
 // ———————————————[Error Handling]———————————————
 process.on("unhandledRejection", (reason, p) => {
+	logger.level = 'trace';
    logger.error("—————————————————————————————————");
    logger.error("[AntiCrash] : Unhandled Rejection/Catch");
    logger.error("—————————————————————————————————");
    logger.debug(reason, p);
+	logger.level = 'info';
 });
 process.on("uncaughtException", (err, origin) => {
+   logger.level = 'trace';
    logger.error("—————————————————————————————————");
    logger.error("[AntiCrash] : Uncaught Exception/Catch");
    logger.error("—————————————————————————————————");
    logger.debug(err, origin);
+   logger.level = 'info';
 });
 process.on("multipleResolves", (type, promise, reason) => {
+	logger.level = 'trace';
    logger.error("—————————————————————————————————");
    logger.error("[AntiCrash] : Multiple Resolves");
    logger.error("—————————————————————————————————");
    logger.debug(type, promise, reason);
+	logger.level = 'info';
 });
