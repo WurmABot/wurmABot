@@ -44,10 +44,11 @@ client.on(Events.MessageCreate, message => {
 	let msg= message;
 	let {guild} = msg;
         let wo=(guild ? guild.id : "DM");
-	let iMsg=message.content.toLowerCase();
+	let iMsg=message.content;
+	iMsg=iMsg.toLowerCase();
         logger.info(' Nachricht-Eingang: ['+message.content+'] | in serverId='+wo+'/channel='+message.channel);
 	//let doc = nlp(message.content);
-     if(iMsg.startsWith === 'hey bot,'){
+     if(iMsg.startsWith('hey bot,')){
 	 let doc = nlp(message.content);
          let todo = doc.after('^hey bot,');
 	 logger.info(' Executing heyBot..');
