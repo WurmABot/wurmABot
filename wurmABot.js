@@ -38,16 +38,24 @@ client.on(Events.MessageCreate, message => {
           	if (messageProcessed.has(message.id)) {
             		return;
           	}
-		if (message.content.startsWith("bot,") || message.content.startsWith("hey bot,")) {
+		prefix1="hey bot,";
+		prefix2="bot,";
+		if (message.content.startsWith(prefix1) || message.content.startsWith(prefix2)) {
+			
 			const prefix=",";
-			const args = message.content.slice(prefix.length).trim().split(/ +/);
+			if(message.content.startsWith(prefix1)) {
+				const args = message.content.slice(prefix1.length).trim().split(/ +/);
+			}
+			if(message.content.startsWith(prefix2)) {
+				const args = message.content.slice(prefix1.length).trim().split(/ +/);
+			}
   			const command = args.shift().toLowerCase();
 	
     			const textToAnalyze = args.join(' ');
     			const doc = nlp(textToAnalyze);
 		       // Beispielanalyse: Anzeigen der Schlüsselwörter
     			const keywords = doc.keywords().out('array');
-    			message.channel.send(`Schlüsselwörter: ${keywords.join(', ')}`);
+    			message.channel.send(`i found the follow keywords: ${keywords.join(', ')}`);
 		}
 		else {
 
