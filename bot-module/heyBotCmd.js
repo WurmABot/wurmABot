@@ -49,7 +49,7 @@ function heyBot(todo,inMsg,inGuild) {
 	
     
     rMsg='My teacher didn\'t explain to me how to do it';
-    switch (action1) {
+    switch (action) {
         case "asking":
             break;
         case "being":
@@ -121,7 +121,7 @@ function heyBot(todo,inMsg,inGuild) {
     		setTimeout(() => {
 
 		var bMsg = 'your message contains the follow:\n';
-        bMsg +='todo-selector is: ${action.conjugate()[0].Gerund} \n'
+        bMsg +='todo-selector is: ${action.join(', ')} \n'
         +"___ \n"
       	+ '- topics: '+topics.join(', ')+'\n'
 		+ '- adjectives: '+adjectives.join(', ')+'\n'
