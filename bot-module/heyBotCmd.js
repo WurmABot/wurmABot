@@ -1,10 +1,14 @@
 const { bold, hyperlink, blockQuote } = require('discord.js');
 const nlp = require('compromise');
+const ilog= require('../logger/logger.js');
 // const { capitalize } = require('../utils.js');
 //const coreMap = require("../data/coreMap.js");
 
 function heyBot(todo,inMsg,inGuild) {
-    var doc=nlp(todo);
+	ilog.info('Hey Bot call, todo:'+todo+', inMsg: '+inMsg.content);
+	var what=inMsg.conent.toLowerCase();
+	var todoN=what.replace('hey bot, ');
+    var doc=nlp(todoN);
     var action = doc.verbs(0).normalize(); //doing what?
 
 	const dout=doc.out('array');
