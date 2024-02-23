@@ -52,7 +52,7 @@ client.on(Events.MessageCreate, message => {
 	 let doc = nlp(message.content);
          let todo = doc.after('^hey bot,');
 	 logger.info(' Executing heyBot..');
-         heyBot.execute(todo,message,readyClient);
+         heyBot.execute(todo,message,guild);
      }
   /* let textToAnalyze;
   let inMsg= message.content;
