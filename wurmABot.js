@@ -38,7 +38,7 @@ client.on(Events.MessageCreate, message => {
           	if (messageProcessed.has(message.id)) {
             		return;
           	}
-		if (message.content.startsWith("bot,") || message.content.startsWith("hey bot,") {
+		if (message.content.startsWith("bot,") || message.content.startsWith("hey bot,")) {
 			const prefix=",";
 			const args = message.content.slice(prefix.length).trim().split(/ +/);
   			const command = args.shift().toLowerCase();
