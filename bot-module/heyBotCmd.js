@@ -40,7 +40,7 @@ function heyBot(todo,inMsg,inGuild) {
 	const nouns= todoN.nouns().out('array');
 	const acronyms=todoN.acronyms().out('array');
 	const conjunctions=todoN.conjunctions().out('array');
-	let action = todoN.verbs(0).normalize()
+	let action = todoN.verbs(0).normalize();
 	//let action1 = action.conjugate()[0].Gerund;
 	//let action2 = action.conjugate()[1].toGerund();
 	
@@ -121,7 +121,7 @@ function heyBot(todo,inMsg,inGuild) {
     		setTimeout(() => {
 
 		var bMsg = 'your message contains the follow:\n';
-        bMsg +='todo-selector is: ${action.join(', ')} \n'
+        bMsg +='todo-selector is: ${action.join(", ")} \n'
         +"___ \n"
       	+ '- topics: '+topics.join(', ')+'\n'
 		+ '- adjectives: '+adjectives.join(', ')+'\n'
