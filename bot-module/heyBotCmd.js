@@ -31,8 +31,8 @@ function heyBot(todo,inMsg,inGuild) {
     loadData('gsData');
 	ilog.info('[Hey Bot] call, todo:'+todo.join(', ')+', inMsg: '+inMsg.content);
 	var what=inMsg.content;
-	var doc=nlp(what);
-	let todoN = doc.after('^hey bot');
+	var doc=nlp(what).replace('hey bot,','');
+	let todoN = doc;
 	const dout=todoN.out('array');
   	const topics= todoN.topics().out('array');
 	const adjectives=todoN.adjectives().out('array');
@@ -50,7 +50,7 @@ function heyBot(todo,inMsg,inGuild) {
 	
     
     rMsg='My teacher didn\'t explain to me how to do it';
-    switch (action) {
+    switch (verbs[0]) {
         case "asking":
             break;
         case "being":
