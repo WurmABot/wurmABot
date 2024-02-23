@@ -73,14 +73,14 @@ client.on(Events.MessageCreate, message => {
     		// Verzögere die Antwort um 3 Sekunden
     		setTimeout(() => {
       		const doc = nlp(textToAnalyze);
-		bmsg += 'your message contains the follow:\n';
+		bMsg += 'your message contains the follow:\n';
       		bMsg += '- topics: '+topics.join(', ')+'\n';
 		bMsg += '- adjectives: '+adjectives.join(', ')+'\n';
 		bMsg += '- verbs: '+verbs.join(', ')+'\n';
 		bMsg += '- nouns: '+nouns.join(', ')+'\n';
 		bMsg += '- acronyms: '+acronyms.join(', ')+'\n';
 
-      		message.channel.send(bMsg);
+      		message.channel.send(blockQuote(bMsg));
     		}, 3000); // 3000 Millisekunden entsprechen 3 Sekunden
   	});
 
