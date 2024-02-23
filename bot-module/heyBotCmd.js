@@ -25,7 +25,7 @@ function heyBot(todo,inMsg,inGuild) {
     		setTimeout(() => {
 
 		var bMsg = 'your message contains the follow:\n';
-        bMsg +='todo-selector is: ' +todo +"\n"
+        bMsg +='todo-selector is: ' +action +"\n"
         +"___ \n"
       	+ '- topics: '+topics.join(', ')+'\n'
 		+ '- adjectives: '+adjectives.join(', ')+'\n'
