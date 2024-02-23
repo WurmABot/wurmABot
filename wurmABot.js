@@ -49,7 +49,7 @@ client.on(Events.MessageCreate, message => {
 	  
   let textToAnalyze;
   let inMsg= message.content;
-  let bMsg = `I found the following keywords: `;
+  let bMsg = `I mean `;
   if (inMsg.startsWith(prefix1) || inMsg.startsWith(prefix2)) {
   	if (inMsg.startsWith(prefix1)) {
     		textToAnalyze = inMsg.slice(prefix1.length).trim();
@@ -67,6 +67,7 @@ client.on(Events.MessageCreate, message => {
 	const verbs= doc.verbs().out('array');
 	const nouns= doc.nouns().out('array');
 	const acronyms=doc.acronyms().out('array');
+	const conjunctions=doc.conjunctions().out('array');
   	
 	  // Bot denkt nach...
   	message.channel.send(" :robot: WurmABot thinks...").then(() => {
@@ -79,6 +80,7 @@ client.on(Events.MessageCreate, message => {
 		bMsg += '- verbs: '+verbs.join(', ')+'\n';
 		bMsg += '- nouns: '+nouns.join(', ')+'\n';
 		bMsg += '- acronyms: '+acronyms.join(', ')+'\n';
+		bMsg += '- conjunctions: 'conjunctions.join(', ')+'\n';
 
       		message.channel.send(blockQuote(bMsg));
     		}, 3000); // 3000 Millisekunden entsprechen 3 Sekunden
