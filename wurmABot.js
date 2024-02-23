@@ -63,10 +63,10 @@ client.on(Events.MessageCreate, message => {
   
   	const doc = nlp(textToAnalyze);
   	const topics= doc.topics().out('array');
-	const adjectives=doc.adjectives().out('array');
-	const verbs= doc.verbs().out('array');
-	const nouns= doc.nouns().out('array');
-	const acronyms=doc.acronyms().out('array');
+	const adjectives=doc.adjectives().all().out('array');
+	const verbs= doc.verbs().all().out('array');
+	const nouns= doc.nouns().all().out('array');
+	const acronyms=doc.acronyms().all().out('array');
 	const conjunctions=doc.conjunctions().out('array');
   	
 	  // Bot denkt nach...
@@ -78,6 +78,7 @@ client.on(Events.MessageCreate, message => {
       		bMsg += '- topics: '+topics.join(', ')+'\n';
 		bMsg += '- adjectives: '+adjectives.join(', ')+'\n';
 		bMsg += '- verbs: '+verbs.join(', ')+'\n';
+		
 		bMsg += '- nouns: '+nouns.join(', ')+'\n';
 		bMsg += '- acronyms: '+acronyms.join(', ')+'\n';
 		bMsg += '- conjunctions: '+conjunctions.join(', ')+'\n';
