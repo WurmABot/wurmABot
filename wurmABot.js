@@ -80,10 +80,10 @@ client.on(Events.MessageCreate, message => {
 		bMsg += '- verbs: '+verbs.join(', ')+'\n';
 		bMsg += '- nouns: '+nouns.join(', ')+'\n';
 		bMsg += '- acronyms: '+acronyms.join(', ')+'\n';
-		bMsg += '- conjunctions: 'conjunctions.join(', ')+'\n';
+		bMsg += '- conjunctions: '+conjunctions.join(', ')+'\n';
 
       		message.channel.send(blockQuote(bMsg));
-    		}, 3000); // 3000 Millisekunden entsprechen 3 Sekunden
+    		}, 2000); // 2000 Millisekunden entsprechen 2 Sekunden
   	});
 
   	
