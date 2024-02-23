@@ -9,7 +9,7 @@ function heyBot(todo,inMsg,inGuild) {
 	var what=inMsg.content.toLowerCase();
 	var todoN=what.replace('hey bot,','');
     var doc=nlp(todoN);
-    var action = doc.verbs(0).normalize(); //doing what?
+    
 
 	const dout=doc.out('array');
   	const topics= doc.topics().out('array');
@@ -18,6 +18,7 @@ function heyBot(todo,inMsg,inGuild) {
 	const nouns= doc.nouns().out('array');
 	const acronyms=doc.acronyms().out('array');
 	const conjunctions=doc.conjunctions().out('array');
+	var action = doc.verbs(0).normalize(); //doing what?
 
 	  // Bot denkt nach...
   	inMsg.channel.send(" :robot: WurmABot thinks...").then(() => {
