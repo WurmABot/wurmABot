@@ -48,7 +48,7 @@ client.on(Events.MessageCreate, message => {
 	if (message.content.toLowerCase() === '.ping') {
              message.channel.send('Loading data').then (async (msg) =>{
                   msg.delete()
-                    message.channel.send(`🏓  `+chalk.green('Latency')+` is ${msg.createdTimestamp - message.createdTimestamp} ms \n API Latency is                  ${Math.round(client.ws.ping)} ms`);
+                    message.channel.send(`🏓  '''Latency''' is ${msg.createdTimestamp - message.createdTimestamp} ms \n API Latency is                  ${Math.round(client.ws.ping)} ms`);
              });
             
 		
@@ -56,16 +56,16 @@ client.on(Events.MessageCreate, message => {
                // Senden Sie eine Antwort auf die Nachricht
                message.channel.send('Hallo! Wie kann ich Ihnen helfen?');
            }else if (message.content.toLowerCase() === 'hey bot') {
-             message.channel.send('hey '+message.author).then (async (msg) =>{
+             message.channel.send('hey '+message.author.name).then (async (msg) =>{
                   //msg.delete()
-                    message.channel.send(` :robot: `+chalk.blue('Iam WurmAbot')+`, what did like todo today? `);
+                    message.channel.send(` :robot: ..Iam WurmAbot, what did like todo today? `);
              });
             
 		
            }
 	
 		else {
-			message.channel.send(chalk.orange("Information")+"Bot RoleBack.. i run only in basic mode.\n"+chalk.orange.bold("You enter: ")+message.content);
+			message.channel.send(" :question: can you say me what i should answer to that? ");
 		}
 		
 		
