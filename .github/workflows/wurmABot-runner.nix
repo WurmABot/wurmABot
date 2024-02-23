@@ -1,4 +1,4 @@
-name: "manueller Bot-Start"
+name: "Bot-Start"
 
 on:
   push:
