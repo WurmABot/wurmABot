@@ -44,10 +44,12 @@ function heyBot(todo,inMsg,inGuild) {
 	const nouns= doc.nouns().out('array');
 	const acronyms=doc.acronyms().out('array');
 	const conjunctions=doc.conjunctions().out('array');
-	var action = doc.verbs(0).normalize(); //doing what?
-    var actionator =action.conjugate()[0];
+	var actions = doc.verbs.normalize(); //doing what?
+	var actionsx = actions.conjugate(); //doing what?
+	var action = doc.verbs.normalize(); //doing what?
+    var actionator =actionsx[0];
     var action2 = doc.verbs(1).normalize(); //doing what?
-    var actionator2 =action.conjugate()[1];
+    var actionator2 =actionsx[1];
     
     rMsg='My teacher didn\'t explain to me how to do it';
     switch (actionator) {
