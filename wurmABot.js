@@ -62,11 +62,12 @@ client.on(Events.MessageCreate, message => {
   	}
   
   	const doc = nlp(textToAnalyze);
+	const dout=doc.out('array');
   	const topics= doc.topics().out('array');
-	const adjectives=doc.adjectives().all().out('array');
-	const verbs= doc.verbs().all().out('array');
-	const nouns= doc.nouns().all().out('array');
-	const acronyms=doc.acronyms().all().out('array');
+	const adjectives=doc.adjectives()..out('array');
+	const verbs= doc.verbs().out('array');
+	const nouns= doc.nouns().out('array');
+	const acronyms=doc.acronyms().out('array');
 	const conjunctions=doc.conjunctions().out('array');
   	
 	  // Bot denkt nach...
@@ -82,6 +83,7 @@ client.on(Events.MessageCreate, message => {
 		bMsg += '- nouns: '+nouns.join(', ')+'\n';
 		bMsg += '- acronyms: '+acronyms.join(', ')+'\n';
 		bMsg += '- conjunctions: '+conjunctions.join(', ')+'\n';
+		bMsg += '___ \n content aif doc.out is= '+ dout.join(', ')+'\n';
 
       		message.channel.send(blockQuote(bMsg));
     		}, 2000); // 2000 Millisekunden entsprechen 2 Sekunden
