@@ -42,11 +42,13 @@ client.on(Events.MessageCreate, message => {
           	if (messageProcessed.has(message.id)) {
             		return;
           	}
-	
+	let msg= message;
+	let {guild} = msg;
+        let wo=(guild ? guild.id : "DM");
         logger.info(chalk.green('[Info]')+ 'eingehende Nachricht: ['+message.content+'] | in '+wo+'/channel='+message.channel);
 	  
   let textToAnalyze;
-  let inMsg= message.content.toLowerCase();
+  let inMsg= message.content;
   let bMsg = `I found the following keywords: `;
   if (inMsg.startsWith(prefix1) || inMsg.startsWith(prefix)) {
   	if (inMsg.startsWith(prefix1)) {
