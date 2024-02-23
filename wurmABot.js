@@ -8,7 +8,7 @@ const client = new Client({ intents: [
 	], });
 const chalk = require("chalk");
 const logger = require('./logger/logger.js');
-const npm = require("compromise");
+const nlp = require("compromise");
 
 // Create a new client instance
 // When the client is ready, run this code (only once).
@@ -72,7 +72,8 @@ client.on(Events.MessageCreate, message => {
            		} else if (message.content.toLowerCase() === 'hey bot') {
              			message.channel.send('hey '+message.author.name).then (async (msg) =>{
                   		//msg.delete()
-                    		message.channel.send(` :robot: ..Iam WurmAbot, what did like todo today? if you whish, that i answer to a question, you must add [hey bot,] for that question (or expression). ] `);
+                    		message.channel.send(` :robot: ..Iam WurmAbot, what did like todo today?\n"
+		      				+"If you whish, that i answer to a question, you must add [hey bot,] for that question (or expression). `);
 				});
 			}
 			else {
