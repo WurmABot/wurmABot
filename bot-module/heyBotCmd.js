@@ -7,7 +7,7 @@ const ilog= require('../logger/logger.js');
 function heyBot(todo,inMsg,inGuild) {
 	ilog.info('Hey Bot call, todo:'+todo+', inMsg: '+inMsg.content);
 	var what=inMsg.content.toLowerCase();
-	var todoN=what.replace('hey bot, ');
+	var todoN=what.replace('hey bot,','');
     var doc=nlp(todoN);
     var action = doc.verbs(0).normalize(); //doing what?
 
