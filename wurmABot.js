@@ -29,6 +29,10 @@ client.messages= new Collection();
 client.selectMenus= new Collection();
 client.config = require("./bot-config/main.json");
 let messageProcessed= new Set();
+
+const prefix1="hey bot,";
+const prefix2="bot,";
+
 client.on(Events.MessageCreate, message => {
            // Überprüfen, ob die Nachricht vom Bot stammt oder kein Text enthält
            	if (message.author.bot || !message.content) {
@@ -38,40 +42,34 @@ client.on(Events.MessageCreate, message => {
           	if (messageProcessed.has(message.id)) {
             		return;
           	}
-		prefix1="hey bot,";
-		prefix2="bot,";
-		if (message.content.startsWith(prefix1) || message.content.startsWith(prefix2)) {
-			
-			const prefix=",";
-			if(message.content.startsWith(prefix1)) {
-				const args = message.content.slice(prefix1.length).trim().split(/ +/);
-			}
-			if(message.content.startsWith(prefix2)) {
-				const args = message.content.slice(prefix1.length).trim().split(/ +/);
-			}
-  			const command = args.shift().toLowerCase();
 	
-    			const textToAnalyze = args.join(' ');
-    			const doc = nlp(textToAnalyze);
-		       // Beispielanalyse: Anzeigen der Schlüsselwörter
-    			const keywords = doc.keywords().out('array');
-    			message.channel.send(`i found the follow keywords: ${keywords.join(', ')}`);
-		}
-		else {
-
-    // Weitere Analysen und Aktionen können hier hinzugefügt werden
+        logger.info(chalk.green('[Info]')+ 'eingehende Nachricht: ['+message.content+'] | in '+wo+'/channel='+message.channel);
+	  
+  let textToAnalyze;
+  let bMsg = `I found the following keywords: `;
+  if (message.content.startsWith(prefix1) || message.content.startsWith(prefix2)) {
+  	if (message.content.startsWith(prefix1)) {
+    		textToAnalyze = message.content.slice(prefix1.length).trim();
+  	} else if (message.content.startsWith(prefix2)) {
+    		textToAnalyze = message.content.slice(prefix2.length).trim();
+  	} else {
+    		bMsg = `I'm sorry, I didn't understand: ${message.content}`;
+    		message.channel.send(bMsg);
+    		return; // Beende die Funktion, wenn keines der Präfixe übereinstimmt
+  	}
   
-			let msg= message;
-            		let {guild} = msg;
-			var pmsg=message.content;
-			var iMsg=pmsg.toLowerCase();
-            		let wo=(guild ? guild.id : "DM");
-			console.log(chalk.green('[Info]')+ 'eingehende Nachricht.');
-            		logger.info(chalk.green('[Info]')+ 'eingehende Nachricht: ['+message.content+'] | in '+wo+'/channel='+message.channel);
-			if (message.content.toLowerCase() === '.ping') {
+  	const doc = nlp(textToAnalyze);
+  	const keywords = doc.keywords().out('array');
+  	bMsg += keywords.join(', ');
+
+  	message.channel.send(bMsg);
+    // Weitere Analysen und Aktionen können hier hinzugefügt werden
+  }
+	
+			else if (message.content.toLowerCase() === '.ping') {
              			message.channel.send('Loading data').then (async (msg) =>{
                   		msg.delete()
-                    		message.channel.send(`🏓 `+blockQuote(` '''Latency''' is ${msg.createdTimestamp - message.createdTimestamp} ms \n API Latency is                  ${Math.round(client.ws.ping)} ms`));
+                    		message.channel.send(`🏓 ping\n`+blockQuote(` '''Latency''' is ${msg.createdTimestamp - message.createdTimestamp} ms \n API Latency is                  ${Math.round(client.ws.ping)} ms`));
              			});
 				
            		} else if (message.content.toLowerCase() === 'hallo') {
