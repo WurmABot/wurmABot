@@ -72,8 +72,8 @@ client.on(Events.MessageCreate, message => {
            		} else if (message.content.toLowerCase() === 'hey bot') {
              			message.channel.send('hey '+message.author.name).then (async (msg) =>{
                   		//msg.delete()
-                    		message.channel.send(` :robot: ..Iam WurmAbot, what did like todo today?\n"
-		      				+"If you whish, that i answer to a question, you must add [hey bot,] for that question (or expression). `);
+                    		message.channel.send(` :robot: ..Iam WurmAbot, what did like todo today?\n`
+		      				+`If you whish, that i answer to a question, you must add [hey bot,] for that question (or expression). `);
 				});
 			}
 			else {
