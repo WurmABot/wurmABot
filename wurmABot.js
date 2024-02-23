@@ -8,6 +8,7 @@ const client = new Client({ intents: [
 	], });
 const chalk = require("chalk");
 const logger = require('./logger/logger.js');
+const npm = require("compromise");
 
 // Create a new client instance
 // When the client is ready, run this code (only once).
@@ -37,7 +38,21 @@ client.on(Events.MessageCreate, message => {
           	if (messageProcessed.has(message.id)) {
             		return;
           	}
-		
+		if (message.content.startsWith("bot,") || message.content.startsWith("hey bot,") {
+			const prefix=",";
+			const args = message.content.slice(prefix.length).trim().split(/ +/);
+  			const command = args.shift().toLowerCase();
+	
+    			const textToAnalyze = args.join(' ');
+    			const doc = nlp(textToAnalyze);
+		       // Beispielanalyse: Anzeigen der Schlüsselwörter
+    			const keywords = doc.keywords().out('array');
+    			message.channel.send(`Schlüsselwörter: ${keywords.join(', ')}`);
+		}
+		else {
+
+    // Weitere Analysen und Aktionen können hier hinzugefügt werden
+  
 			let msg= message;
             		let {guild} = msg;
 			var pmsg=message.content;
@@ -45,36 +60,29 @@ client.on(Events.MessageCreate, message => {
             		let wo=(guild ? guild.id : "DM");
 			console.log(chalk.green('[Info]')+ 'eingehende Nachricht.');
             		logger.info(chalk.green('[Info]')+ 'eingehende Nachricht: ['+message.content+'] | in '+wo+'/channel='+message.channel);
-	if (message.content.toLowerCase() === '.ping') {
-             message.channel.send('Loading data').then (async (msg) =>{
-                  msg.delete()
-                    message.channel.send(`🏓  '''Latency''' is ${msg.createdTimestamp - message.createdTimestamp} ms \n API Latency is                  ${Math.round(client.ws.ping)} ms`);
-             });
-            
-		
-           } else if (message.content.toLowerCase() === 'hallo') {
-               // Senden Sie eine Antwort auf die Nachricht
-               message.channel.send('Hallo! Wie kann ich Ihnen helfen?');
-           }else if (message.content.toLowerCase() === 'hey bot') {
-             message.channel.send('hey '+message.author.name).then (async (msg) =>{
-                  //msg.delete()
-                    message.channel.send(` :robot: ..Iam WurmAbot, what did like todo today? `);
-             });
-            
-		
-           }
-	
-		else {
-			message.channel.send(" :question: can you say me what i should answer to that? ");
-		}
-		
-		
-		
+			if (message.content.toLowerCase() === '.ping') {
+             			message.channel.send('Loading data').then (async (msg) =>{
+                  		msg.delete()
+                    		message.channel.send(`🏓  '''Latency''' is ${msg.createdTimestamp - message.createdTimestamp} ms \n API Latency is                  ${Math.round(client.ws.ping)} ms`);
+             			});
+				
+           		} else if (message.content.toLowerCase() === 'hallo') {
+               			// Senden Sie eine Antwort auf die Nachricht
+               			message.channel.send('Hallo! Wie kann ich Ihnen helfen?');
+           		} else if (message.content.toLowerCase() === 'hey bot') {
+             			message.channel.send('hey '+message.author.name).then (async (msg) =>{
+                  		//msg.delete()
+                    		message.channel.send(` :robot: ..Iam WurmAbot, what did like todo today? if you whish, that i answer to a question, you must add [hey bot,] for that question (or expression). ] `);
+				});
+			}
+			else {
+				
+			}
 		
 		//message.channel.send(chalk.orange("Information")+"Bot RoleBack.. i run only in basic mode.\n"+chalk.orange.bold("You enter: ")+message.content);
            // Reagieren auf die Nachricht je nach Inhalt
 		
-  
+		}
   messageProcessed.add(message.id);
 });
 	
