@@ -41,15 +41,12 @@ function heyBot(todo,inMsg,inGuild) {
   	const topics= doc.topics().out('array');
 	const adjectives=doc.adjectives().out('array');
 	const verbs= doc.verbs().out('array');
-	const nouns= doc.nouns().out('array');
+	const nouns= docx.nouns().out('array');
 	const acronyms=doc.acronyms().out('array');
 	const conjunctions=doc.conjunctions().out('array');
-	var actions = doc.verbs.normalize(); //doing what?
-	var actionsx = actions.conjugate(); //doing what?
 	var action = doc.verbs.normalize(); //doing what?
-    var actionator =actionsx[0];
-    var action2 = doc.verbs(1).normalize(); //doing what?
-    var actionator2 =actionsx[1];
+    var actionator1 =action.verbs(0);  
+    var actionator2 =action.verbs(1);
     
     rMsg='My teacher didn\'t explain to me how to do it';
     switch (actionator) {
@@ -124,7 +121,7 @@ function heyBot(todo,inMsg,inGuild) {
     		setTimeout(() => {
 
 		var bMsg = 'your message contains the follow:\n';
-        bMsg +='todo-selector is: ${actionator} and  ${actionator2} \n'
+        bMsg +='todo-selector is: ${actionator1} and  ${actionator2} \n'
         +"___ \n"
       	+ '- topics: '+topics.join(', ')+'\n'
 		+ '- adjectives: '+adjectives.join(', ')+'\n'
