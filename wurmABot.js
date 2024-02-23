@@ -61,6 +61,17 @@ client.on(Events.MessageCreate, message => {
   	const doc = nlp(textToAnalyze);
   	const keywords = doc.keywords().out('array');
   	bMsg += keywords.join(', ');
+	  // Bot denkt nach...
+  	message.channel.send("WurmABot thinks...").then(() => {
+    		// Verzögere die Antwort um 3 Sekunden
+    		setTimeout(() => {
+      		const doc = nlp(textToAnalyze);
+      		const keywords = doc.keywords().out('array');
+      		bMsg += keywords.join(', ');
+
+      		message.channel.send(bMsg);
+    		}, 3000); // 3000 Millisekunden entsprechen 3 Sekunden
+  	});
 
   	message.channel.send(bMsg);
     // Weitere Analysen und Aktionen können hier hinzugefügt werden
@@ -89,7 +100,7 @@ client.on(Events.MessageCreate, message => {
 		//message.channel.send(chalk.orange("Information")+"Bot RoleBack.. i run only in basic mode.\n"+chalk.orange.bold("You enter: ")+message.content);
            // Reagieren auf die Nachricht je nach Inhalt
 		
-		}
+		
   messageProcessed.add(message.id);
 });
 	
