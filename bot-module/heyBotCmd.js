@@ -32,7 +32,7 @@ function heyBot(todo,inMsg,inGuild) {
 	ilog.info('[Hey Bot] call, todo:'+todo.join(', ')+', inMsg: '+inMsg.content);
 	var what=inMsg.content;
 	var doc=nlp(what);
-	let todoN = doc.after('^simon says')
+	let todoN = doc.after('^hey bot,');
 	const dout=todoN.out('array');
   	const topics= todoN.topics().out('array');
 	const adjectives=todoN.adjectives().out('array');
