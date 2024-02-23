@@ -9,18 +9,6 @@ const manager = new ShardingManager('./wurmABot.js', {
   token: token });
 
 manager.on('shardCreate', shard => console.log(`Launched shard ${shard.id}`));
-client.on(Events.InteractionCreate, interaction => {
-	// ...
-	if (commandName === 'send') {
-		const id = interaction.options.getString('destination');
-		const channel = client.channels.cache.get(id);
-
-		if (!channel) return interaction.reply('I could not find such a channel.');
-
-		channel.send('Hello!');
-		return interaction.reply(`I have sent a message to channel: \`${id}\`!`);
-	}
-});
 
 manager.spawn()
 .then(shards => {
