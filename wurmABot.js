@@ -15,8 +15,8 @@ const heyBot = require('./bot-module/heyBotCmd.js'); // the message ai of the bo
 // The distinction between `client: Client<boolean>` and `readyClient: Client<true>` is important for TypeScript developers.
 // It makes some properties non-nullable.
 client.once(Events.ClientReady, readyClient => {
-	console.log(chalk.green(`[Info]`)+` Ready! Logged in as ${readyClient.user.tag}`);
-	logger.info(chalk.green(`Ready! Logged in as ${readyClient.user.tag}`));
+	//console.log(chalk.green(`[Info]`)+` Ready! Logged in as ${readyClient.user.tag}`);
+	logger.info(chalk.green(`Ready!`)+ Logged in as ${readyClient.user.tag}`));
 });
 
 
@@ -44,9 +44,10 @@ client.on(Events.MessageCreate, message => {
 	let msg= message;
 	let {guild} = msg;
         let wo=(guild ? guild.id : "DM");
-        logger.info(chalk.green('[Info]')+ 'eingehende Nachricht: ['+message.content+'] | in serverId='+wo+'/channel='+message.channel);
-	let doc = nlp(message.content);
-     if(doc.has('^hey bot, ',message)){
+        logger.info(' Nachricht-Eingang: ['+message.content+'] | in serverId='+wo+'/channel='+message.channel);
+	//let doc = nlp(message.content);
+     if(message.content.startsWith=='hey bot,'){
+	 let doc = nlp(message.content);
          let todo = doc.after('^hey bot, ');
          heyBot.execute(todo);
      }
