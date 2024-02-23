@@ -45,9 +45,9 @@ function heyBot(todo,inMsg,inGuild) {
 	const acronyms=doc.acronyms().out('array');
 	const conjunctions=doc.conjunctions().out('array');
 	var action = doc.verbs(0).normalize(); //doing what?
-    var actionator =action.conjugate()[0].Gerund;
+    var actionator =action.conjugate()[0];
     var action2 = doc.verbs(1).normalize(); //doing what?
-    var actionator2 =action.conjugate()[1].Gerund;
+    var actionator2 =action.conjugate()[1];
     
     rMsg='My teacher didn\'t explain to me how to do it';
     switch (actionator) {
