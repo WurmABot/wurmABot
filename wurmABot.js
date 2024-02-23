@@ -62,14 +62,14 @@ client.on(Events.MessageCreate, message => {
   	}
   
   	const doc = nlp(textToAnalyze);
-  	const keywords = doc.topics().out('array');
+  	const keywords = doc.topics().unique();
   	bMsg += keywords.join(', ');
 	  // Bot denkt nach...
   	message.channel.send(" :robot: WurmABot thinks...").then(() => {
     		// Verzögere die Antwort um 3 Sekunden
     		setTimeout(() => {
       		const doc = nlp(textToAnalyze);
-      		const keywords = doc.topics().out('array');
+      		const keywords = doc.topics().unique();
       		bMsg += keywords.join(', ');
 
       		message.channel.send(bMsg);
@@ -90,7 +90,7 @@ client.on(Events.MessageCreate, message => {
                			// Senden Sie eine Antwort auf die Nachricht
                			message.channel.send('Hallo! Wie kann ich Ihnen helfen?');
            		} else if (message.content.toLowerCase() === 'hey bot') {
-             			message.channel.send('hey '+message.author.name).then (async (msg) =>{
+             			message.channel.send('hey '+message.author.displayName).then (async (msg) =>{
                   		//msg.delete()
                     		message.channel.send(` :robot: `+blockQuote(`..Iam WurmAbot, what did like todo today?\n`
 		      				+`If you whish, that i answer to a question, you must add [hey bot,] for that question (or expression). `));
