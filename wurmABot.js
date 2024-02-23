@@ -62,7 +62,7 @@ client.on(Events.MessageCreate, message => {
   	}
   
   	const doc = nlp(textToAnalyze);
-  	const keywords = doc.keywords().out('array');
+  	const keywords = doc.topics().out('array');
   	bMsg += keywords.join(', ');
 	  // Bot denkt nach...
   	message.channel.send(" :robot: WurmABot thinks...").then(() => {
