@@ -1,4 +1,4 @@
-const { Client, Collection,Events,GatewayIntentBits } = require("discord.js");
+const { Client, Collection,Events,GatewayIntentBits, blockQuote} = require("discord.js");
 // Import Discord.Js.
 const client = new Client({ intents: [
 		GatewayIntentBits.Guilds,
@@ -71,7 +71,7 @@ client.on(Events.MessageCreate, message => {
 			if (message.content.toLowerCase() === '.ping') {
              			message.channel.send('Loading data').then (async (msg) =>{
                   		msg.delete()
-                    		message.channel.send(`🏓  '''Latency''' is ${msg.createdTimestamp - message.createdTimestamp} ms \n API Latency is                  ${Math.round(client.ws.ping)} ms`);
+                    		message.channel.send(`🏓 +blockQuote('''Latency''' is ${msg.createdTimestamp - message.createdTimestamp} ms \n API Latency is                  ${Math.round(client.ws.ping)} ms`));
              			});
 				
            		} else if (message.content.toLowerCase() === 'hallo') {
@@ -80,8 +80,8 @@ client.on(Events.MessageCreate, message => {
            		} else if (message.content.toLowerCase() === 'hey bot') {
              			message.channel.send('hey '+message.author.name).then (async (msg) =>{
                   		//msg.delete()
-                    		message.channel.send(` :robot: ..Iam WurmAbot, what did like todo today?\n`
-		      				+`If you whish, that i answer to a question, you must add [hey bot,] for that question (or expression). `);
+                    		message.channel.send(` :robot: `+blockQuote(`..Iam WurmAbot, what did like todo today?\n`
+		      				+`If you whish, that i answer to a question, you must add [hey bot,] for that question (or expression). `));
 				});
 			}
 			else {
