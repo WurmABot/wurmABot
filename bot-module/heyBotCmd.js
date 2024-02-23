@@ -31,7 +31,7 @@ function heyBot(todo,inMsg,inGuild) {
     loadData('gsData');
 	ilog.info('[Hey Bot] call, todo:'+todo.join(', ')+', inMsg: '+inMsg.content);
 	var what=inMsg.content;
-	var doc=nlp(todoN);
+	var doc=nlp(what);
 	let todoN = doc.after('^simon says')
 	const dout=doc.out('array');
   	const topics= doc.topics().out('array');
