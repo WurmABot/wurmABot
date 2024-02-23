@@ -1,6 +1,6 @@
 const { bold, hyperlink, blockQuote } = require('discord.js');
 const nlp = require('compromise');
-const { capitalize } = require('../utils.js');
+// const { capitalize } = require('../utils.js');
 //const coreMap = require("../data/coreMap.js");
 
 function heyBot(todo,inMsg) {
