@@ -32,7 +32,7 @@ function heyBot(todo,inMsg,inGuild) {
 		+ '- conjunctions: '+conjunctions.join(', ')+'\n'
 		 + '___ \n content aif doc.out is= '+ dout.join(', ')+'\n';
 
-      		message.channel.send(blockQuote(bMsg));
+      		inMsg.channel.send(blockQuote(bMsg));
     		}, 2000); // 2000 Millisekunden entsprechen 2 Sekunden
   	});
 }
