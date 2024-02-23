@@ -1,6 +1,6 @@
 const { bold, hyperlink, blockQuote } = require('discord.js');
 const nlp = require('compromise');
-const fs =require('fs').promises;
+const fs =require('fs');
 const ilog= require('../logger/logger.js');
 // const { capitalize } = require('../utils.js');
 //const coreMap = require("../data/coreMap.js");
@@ -9,7 +9,7 @@ let gObjects=new Map();
 let deeds = new Map();
 let users = new Map();
 let botSettings= new Map();
-async function loadData(what=null,subname=null) {
+function loadData(what=null,subname=null) {
     let myFile = "../data/";
     if (what === "gsData") {
         myFile += "known-WO-Gameservers.json";
@@ -25,10 +25,10 @@ async function loadData(what=null,subname=null) {
     }
     
 }
-
+loadData("gsData");
 
 function heyBot(todo,inMsg,inGuild) {
-    await loadData('gsData');
+    loadData('gsData');
 	ilog.info('[Hey Bot] call, todo:'+todo+', inMsg: '+inMsg.content);
 	var what=inMsg.content.toLowerCase();
 	var todoN=what.replace('hey bot,','');
