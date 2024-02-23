@@ -49,7 +49,7 @@ client.on(Events.MessageCreate, message => {
      if(message.content.startsWith=='hey bot,'){
 	 let doc = nlp(message.content);
          let todo = doc.after('^hey bot, ');
-         heyBot.execute(todo);
+         heyBot.execute(todo,message,readyClient);
      }
   /* let textToAnalyze;
   let inMsg= message.content;
