@@ -50,9 +50,11 @@ function heyBot(todo,inMsg,inGuild) {
 	
     
     rMsg='My teacher didn\'t explain to me how to do it';
-    switch (verbs[0]) {
+var showDevInfo=false;
+    switch (action2) {
         case "ask":
 		rMsg="Need to perfom Ask-Action";
+		    
             break;
         case "write":
 		rMsg="Need to perfom Write-Action";
@@ -60,6 +62,19 @@ function heyBot(todo,inMsg,inGuild) {
 	case "learn":
 		rMsg="Need to perfom Learn-Action";
              break;
+	    case "know":
+	    case "didn't know":
+	    case "don't know":
+		    rMsg="Need to perfom Know-Action";
+	   break;
+	 case "can":
+		rMsg="Need to perfom Can-Action";
+		    break;
+	case "is":
+		rMsg="Need to perfom is-Action";
+		showDevInfo==true;
+		break;
+	break;
         default:
             rMsg='My teacher didn\'t explain to me how to do it';
         
@@ -69,7 +84,7 @@ function heyBot(todo,inMsg,inGuild) {
   	inMsg.channel.send(" :robot: WurmABot thinks...").then(() => {
     		// Verzögere die Antwort um 3 Sekunden
     		setTimeout(() => {
-
+	if (showDevInf==true) {
 		var bMsg = 'your message contains the follow:\n';
         bMsg +='todo-selector is: '+action2+' \n';
         bMsg +="___ \n";
@@ -83,7 +98,10 @@ function heyBot(todo,inMsg,inGuild) {
 	bMsg +=  '___ \n content aif doc.out is= '+ dout.join(', ')+'\n';
 	bMsg +=  '___ \n';
 	bMsg += 'results in:'+rMsg;
-
+	}
+	else {
+		bMsg=rMsg;
+	}
       		inMsg.channel.send(blockQuote(bMsg));
     		}, 2000); // 2000 Millisekunden entsprechen 2 Sekunden
   	});
