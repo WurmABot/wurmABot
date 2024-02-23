@@ -71,7 +71,7 @@ client.on(Events.MessageCreate, message => {
 			if (message.content.toLowerCase() === '.ping') {
              			message.channel.send('Loading data').then (async (msg) =>{
                   		msg.delete()
-                    		message.channel.send(`🏓 +blockQuote('''Latency''' is ${msg.createdTimestamp - message.createdTimestamp} ms \n API Latency is                  ${Math.round(client.ws.ping)} ms`));
+                    		message.channel.send(`🏓 `+blockQuote('''Latency''' is ${msg.createdTimestamp - message.createdTimestamp} ms \n API Latency is                  ${Math.round(client.ws.ping)} ms`));
              			});
 				
            		} else if (message.content.toLowerCase() === 'hallo') {
