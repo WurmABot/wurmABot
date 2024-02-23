@@ -9,7 +9,7 @@ const client = new Client({ intents: [
 const chalk = require("chalk");
 const logger = require('./logger/logger.js');
 const nlp = require("compromise");
-
+const heyBot = require('./bot-module/heyBotCmd.js'); // the message ai of the bot...
 // Create a new client instance
 // When the client is ready, run this code (only once).
 // The distinction between `client: Client<boolean>` and `readyClient: Client<true>` is important for TypeScript developers.
@@ -30,8 +30,6 @@ client.selectMenus= new Collection();
 client.config = require("./bot-config/main.json");
 let messageProcessed= new Set();
 
-const prefix1="hey bot,";
-const prefix2="bot,";
 
 client.on(Events.MessageCreate, message => {
            // Überprüfen, ob die Nachricht vom Bot stammt oder kein Text enthält
@@ -42,13 +40,19 @@ client.on(Events.MessageCreate, message => {
           	if (messageProcessed.has(message.id)) {
             		return;
           	}
+
 	let msg= message;
 	let {guild} = msg;
         let wo=(guild ? guild.id : "DM");
-        logger.info(chalk.green('[Info]')+ 'eingehende Nachricht: ['+message.content+'] | in '+wo+'/channel='+message.channel);
-	  
-  let textToAnalyze;
+        logger.info(chalk.green('[Info]')+ 'eingehende Nachricht: ['+message.content+'] | in serverId='+wo+'/channel='+message.channel);
+	let doc = nlp(message.content);
+     if(doc.has('^hey bot, ',message)){
+         let todo = doc.after('^hey bot, ');
+         heyBot.execute(todo);
+     }
+  /* let textToAnalyze;
   let inMsg= message.content;
+
   let bMsg = `I mean `;
   if (inMsg.startsWith(prefix1) || inMsg.startsWith(prefix2)) {
   	if (inMsg.startsWith(prefix1)) {
@@ -60,7 +64,7 @@ client.on(Events.MessageCreate, message => {
     		message.channel.send(bMsg);
     		return; // Beende die Funktion, wenn keines der Präfixe übereinstimmt
   	}
-  
+
   	const doc = nlp(textToAnalyze);
 	const dout=doc.out('array');
   	const topics= doc.topics().out('array');
@@ -69,7 +73,7 @@ client.on(Events.MessageCreate, message => {
 	const nouns= doc.nouns().out('array');
 	const acronyms=doc.acronyms().out('array');
 	const conjunctions=doc.conjunctions().out('array');
-  	
+
 	  // Bot denkt nach...
   	message.channel.send(" :robot: WurmABot thinks...").then(() => {
     		// Verzögere die Antwort um 3 Sekunden
@@ -79,7 +83,7 @@ client.on(Events.MessageCreate, message => {
       		bMsg += '- topics: '+topics.join(', ')+'\n';
 		bMsg += '- adjectives: '+adjectives.join(', ')+'\n';
 		bMsg += '- verbs: '+verbs.join(', ')+'\n';
-		
+
 		bMsg += '- nouns: '+nouns.join(', ')+'\n';
 		bMsg += '- acronyms: '+acronyms.join(', ')+'\n';
 		bMsg += '- conjunctions: '+conjunctions.join(', ')+'\n';
@@ -89,37 +93,37 @@ client.on(Events.MessageCreate, message => {
     		}, 2000); // 2000 Millisekunden entsprechen 2 Sekunden
   	});
 
-  	
+
     // Weitere Analysen und Aktionen können hier hinzugefügt werden
-  }
-	
-			else if (message.content.toLowerCase() === '.ping') {
+  }*/
+
+ else if (message.content.toLowerCase() === '.ping') {
              			message.channel.send('Loading data').then (async (msg) =>{
                   		msg.delete()
                     		message.channel.send(`🏓 ping\n`+blockQuote(` '''Latency''' is ${msg.createdTimestamp - message.createdTimestamp} ms \n API Latency is                  ${Math.round(client.ws.ping)} ms`));
              			});
-				
-           		} else if (message.content.toLowerCase() === 'hallo') {
+
+ } else if (message.content.toLowerCase() === 'hello') {
                			// Senden Sie eine Antwort auf die Nachricht
-               			message.channel.send('Hallo! Wie kann ich Ihnen helfen?');
-           		} else if (message.content.toLowerCase() === 'hey bot') {
+               			message.channel.send('Hello '+message.author.displayName+'! \n'+'My name is WurmABot.\n'+'Iam Artificial intelligence (AI) - Bot.\n'+'For reactions from me, make please a Chat-Input whith the beginning of \"hey bot,\"  - than i will try to help you.');
+    } else if (message.content.toLowerCase() === 'hey bot') {
              			message.channel.send('hey '+message.author.displayName).then (async (msg) =>{
                   		//msg.delete()
                     		message.channel.send(` :robot: `+blockQuote(`..Iam WurmAbot, what did like todo today?\n`
-		      				+`If you whish, that i answer to a question, you must add [hey bot,] for that question (or expression). `));
+		      				+`If you whish, that i answer to you better , you must add [hey bot,] for that question (or expression). `));
 				});
 			}
 			else {
-				message.channel.send('Can i help you?');
+
 			}
-		
+
 		//message.channel.send(chalk.orange("Information")+"Bot RoleBack.. i run only in basic mode.\n"+chalk.orange.bold("You enter: ")+message.content);
            // Reagieren auf die Nachricht je nach Inhalt
-		
-		
+
+
   messageProcessed.add(message.id);
 });
-	
+
 // ———————————————[Logging Into Client]———————————————
 const token = process.env["DISCORD_TOKEN"] || client.config.DISCORD_TOKEN;
 
