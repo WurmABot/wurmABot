@@ -20,16 +20,16 @@ function heyBot(todo,inMsg) {
     		// Verzögere die Antwort um 3 Sekunden
     		setTimeout(() => {
 
-		var bMsg = 'your message contains the follow:\n';
-        +='todo-selector is: ' +todo +"\n";
-        +="___ \n";
-      	+= '- topics: '+topics.join(', ')+'\n';
-		+= '- adjectives: '+adjectives.join(', ')+'\n';
-		+= '- verbs: '+verbs.join(', ')+'\n';
+		var bMsg = 'your message contains the follow:\n'
+        +='todo-selector is: ' +todo +"\n"
+        +="___ \n"
+      	+= '- topics: '+topics.join(', ')+'\n'
+		+= '- adjectives: '+adjectives.join(', ')+'\n'
+		+= '- verbs: '+verbs.join(', ')+'\n'
 
-		+= '- nouns: '+nouns.join(', ')+'\n';
-		 += '- acronyms: '+acronyms.join(', ')+'\n';
-		+= '- conjunctions: '+conjunctions.join(', ')+'\n';
+		+= '- nouns: '+nouns.join(', ')+'\n'
+		 += '- acronyms: '+acronyms.join(', ')+'\n'
+		+= '- conjunctions: '+conjunctions.join(', ')+'\n'
 		 += '___ \n content aif doc.out is= '+ dout.join(', ')+'\n';
 
       		message.channel.send(blockQuote(bMsg));
