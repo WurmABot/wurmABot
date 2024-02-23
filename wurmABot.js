@@ -66,7 +66,7 @@ client.on(Events.MessageCreate, message => {
 	const adjectives=doc.adjectives().out('array');
 	const verbs= doc.verbs().out('array');
 	const nouns= doc.nouns().out('array');
-	const acronyms=doc.acronyms()().out('array');
+	const acronyms=doc.acronyms().out('array');
   	
 	  // Bot denkt nach...
   	message.channel.send(" :robot: WurmABot thinks...").then(() => {
@@ -78,7 +78,7 @@ client.on(Events.MessageCreate, message => {
 		bMsg += '- adjectives: '+adjectives.join(', ')+'\n';
 		bMsg += '- verbs: '+verbs.join(', ')+'\n';
 		bMsg += '- nouns: '+nouns.join(', ')+'\n';
-		bMsg += '- ancronyms: '+acronyms.join(', ')+'\n';
+		bMsg += '- acronyms: '+acronyms.join(', ')+'\n';
 
       		message.channel.send(bMsg);
     		}, 3000); // 3000 Millisekunden entsprechen 3 Sekunden
