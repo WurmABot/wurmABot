@@ -16,7 +16,7 @@ function heyBot(todo,inMsg,inGuild) {
 	const conjunctions=doc.conjunctions().out('array');
 
 	  // Bot denkt nach...
-  	message.channel.send(" :robot: WurmABot thinks...").then(() => {
+  	inMsg.channel.send(" :robot: WurmABot thinks...").then(() => {
     		// Verzögere die Antwort um 3 Sekunden
     		setTimeout(() => {
 
