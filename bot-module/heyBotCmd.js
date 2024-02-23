@@ -41,7 +41,7 @@ function heyBot(todo,inMsg,inGuild) {
 	const acronyms=todoN.acronyms().out('array');
 	const conjunctions=todoN.conjunctions().out('array');
 	let action = todoN.verbs(0).normalize();
-	let action2 todoN.verbs(0).normalize.out('array');
+	let action2 = todoN.verbs(0).normalize.out('array');
 	//let action1 = action.conjugate()[0].Gerund;
 	//let action2 = action.conjugate()[1].toGerund();
 	
