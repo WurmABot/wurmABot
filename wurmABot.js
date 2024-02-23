@@ -148,17 +148,17 @@ process.on("unhandledRejection", (reason, p) => {
    logger.error("—————————————————————————————————");
    logger.error("[AntiCrash] : Unhandled Rejection/Catch");
    logger.error("—————————————————————————————————");
-   logger.error(reason, p);
+   logger.debug(reason, p);
 });
 process.on("uncaughtException", (err, origin) => {
    logger.error("—————————————————————————————————");
    logger.error("[AntiCrash] : Uncaught Exception/Catch");
    logger.error("—————————————————————————————————");
-   logger.error(err, origin);
+   logger.debug(err, origin);
 });
 process.on("multipleResolves", (type, promise, reason) => {
    logger.error("—————————————————————————————————");
    logger.error("[AntiCrash] : Multiple Resolves");
    logger.error("—————————————————————————————————");
-   logger.error(type, promise, reason);
+   logger.debug(type, promise, reason);
 });
