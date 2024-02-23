@@ -42,7 +42,7 @@ function heyBot(todo,inMsg,inGuild) {
 	const conjunctions=todoN.conjunctions().out('array');
 	let action = todoN.verbs(0).normalize()
 	let action1 = action.conjugate()[0].toGerund();
-	let action2 = action.conjugate()[1].toGerund();
+	//let action2 = action.conjugate()[1].toGerund();
 	
 	
 	
@@ -121,7 +121,7 @@ function heyBot(todo,inMsg,inGuild) {
     		setTimeout(() => {
 
 		var bMsg = 'your message contains the follow:\n';
-        bMsg +='todo-selector is: ${action1} and  ${action2} \n'
+        bMsg +='todo-selector is: ${action1} \n'
         +"___ \n"
       	+ '- topics: '+topics.join(', ')+'\n'
 		+ '- adjectives: '+adjectives.join(', ')+'\n'
