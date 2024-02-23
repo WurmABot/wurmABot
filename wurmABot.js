@@ -46,14 +46,15 @@ client.on(Events.MessageCreate, message => {
         logger.info(chalk.green('[Info]')+ 'eingehende Nachricht: ['+message.content+'] | in '+wo+'/channel='+message.channel);
 	  
   let textToAnalyze;
+  let inMsg= message.content.toLowerCase();
   let bMsg = `I found the following keywords: `;
-  if (message.content.startsWith(prefix1) || message.content.startsWith(prefix2)) {
-  	if (message.content.startsWith(prefix1)) {
-    		textToAnalyze = message.content.slice(prefix1.length).trim();
-  	} else if (message.content.startsWith(prefix2)) {
-    		textToAnalyze = message.content.slice(prefix2.length).trim();
+  if (inMsg.startsWith(prefix1) || inMsg.startsWith(prefix)) {
+  	if (inMsg.startsWith(prefix1)) {
+    		textToAnalyze = inMsg.slice(prefix1.length).trim();
+  	} else if (inMsg.startsWith(prefix2)) {
+    		textToAnalyze = inMsg.slice(prefix2.length).trim();
   	} else {
-    		bMsg = `I'm sorry, I didn't understand: ${message.content}`;
+    		bMsg = `I'm sorry, I didn't understand: ${inMsg}`;
     		message.channel.send(bMsg);
     		return; // Beende die Funktion, wenn keines der Präfixe übereinstimmt
   	}
@@ -62,7 +63,7 @@ client.on(Events.MessageCreate, message => {
   	const keywords = doc.keywords().out('array');
   	bMsg += keywords.join(', ');
 	  // Bot denkt nach...
-  	message.channel.send("WurmABot thinks...").then(() => {
+  	message.channel.send(" :robot: WurmABot thinks...").then(() => {
     		// Verzögere die Antwort um 3 Sekunden
     		setTimeout(() => {
       		const doc = nlp(textToAnalyze);
