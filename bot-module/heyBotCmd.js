@@ -3,7 +3,7 @@ const nlp = require('compromise');
 // const { capitalize } = require('../utils.js');
 //const coreMap = require("../data/coreMap.js");
 
-function heyBot(todo,inMsg,inClient) {
+function heyBot(todo,inMsg,inGuild) {
     var doc=nlp(todo);
     var action = doc.verbs(0).normalize(); //doing what?
 
