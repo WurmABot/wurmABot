@@ -122,7 +122,7 @@ function heyBot(todo,inMsg,inGuild) {
     		setTimeout(() => {
 
 		var bMsg = 'your message contains the follow:\n';
-        bMsg +='todo-selector is: ' +actionator+" and " +actionator2+" \n"
+        bMsg +='todo-selector is: ' +actionator.Gerund+" and " +actionator2.Gerund+" \n"
         +"___ \n"
       	+ '- topics: '+topics.join(', ')+'\n'
 		+ '- adjectives: '+adjectives.join(', ')+'\n'
