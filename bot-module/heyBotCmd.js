@@ -45,7 +45,7 @@ function heyBot(todo,inMsg,inGuild) {
 	//let action1 = action.conjugate()[0].Gerund;
 	//let action2 = action.conjugate()[1].toGerund();
 	
-    rMsg='My teacher didn\'t explain to me how to do it';
+var rMsg='My teacher didn\'t explain to me how to do it';
 var showDevInfo=false;
     switch (action2) {
         case "ask":
@@ -70,7 +70,7 @@ var showDevInfo=false;
 		rMsg="Need to perfom is-Action";
 		showDevInfo==true;
 		break;
-	break;
+	
         default:
             rMsg='My teacher didn\'t explain to me how to do it';
         
@@ -93,7 +93,7 @@ var showDevInfo=false;
 	bMsg += '- conjunctions: '+conjunctions.join(', ')+'\n';
 	bMsg +=  '___ \n content aif doc.out is= '+ dout.join(', ')+'\n';
 	bMsg +=  '___ \n';
-	bMsg += 'results in:'+rMsg;
+	bMsg += 'results in:'+rMsg+ ", - ["+action2+"]";
 	}
 	else {
 		bMsg=rMsg;
