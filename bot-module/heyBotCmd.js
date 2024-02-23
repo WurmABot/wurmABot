@@ -14,7 +14,7 @@ function loadData(what=null,subname=null) {
     if (what === "gsData") {
         myFile += "known-WO-Gameservers.json";
         try {
-            const data = await fs.readFile(myFile, 'utf8');
+            const data = fs.readFile(myFile, 'utf8');
             gsData = new Map(JSON.parse(data));
             ilog.info("Data ["+myFile+"] loaded successfully!");
         } catch (err) {
