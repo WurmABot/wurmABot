@@ -69,7 +69,7 @@ client.on(Events.MessageCreate, message => {
     		// Verzögere die Antwort um 3 Sekunden
     		setTimeout(() => {
       		const doc = nlp(textToAnalyze);
-      		const keywords = doc.keywords().out('array');
+      		const keywords = doc.topics().out('array');
       		bMsg += keywords.join(', ');
 
       		message.channel.send(bMsg);
