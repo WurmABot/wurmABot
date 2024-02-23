@@ -51,65 +51,14 @@ function heyBot(todo,inMsg,inGuild) {
     
     rMsg='My teacher didn\'t explain to me how to do it';
     switch (verbs[0]) {
-        case "asking":
+        case "ask":
+		rMsg="Need to perfom Ask-Action";
             break;
-        case "being":
-            break;
-        case "building":
-            break;
-        case "can":
-            break;
-        case "crafting":
-            break;
-        case "getting":
-            break;
-        case "going":
-            break;
-        case "hearing":
-            break;
-        case "knowing":
-            break;
-        case "learning":
-            break;
-        case "liking":
-            break;
-        case "looking":
-            break;
-        case "needing":
-            break;
-        case "paying":
-            break;
-        case "playing":
-            break;
-        case "reporting":
-            break;
-        case "seeing":
-            break;
-        case "sending":
-            break;
-        case "sleeping":
-            break;
-        case "showing":
-            break;
-        case "starting":
-            break;
-        case "staying":
-            break;
-        case "thinking":
+        case "write":
+		rMsg="Need to perfom Write-Action";
              break;
-        case "talking":
-             break;
-        case "telling":
-             break;
-        case "trying":
-             break;
-        case "using":
-             break;
-        case "wanting":
-             break;
-        case "watching":
-             break;
-        case "writing":
+	case "learn":
+		rMsg="Need to perfom Learn-Action";
              break;
         default:
             rMsg='My teacher didn\'t explain to me how to do it';
@@ -122,16 +71,18 @@ function heyBot(todo,inMsg,inGuild) {
     		setTimeout(() => {
 
 		var bMsg = 'your message contains the follow:\n';
-        bMsg +='todo-selector is: '+action2+' \n'
-        +"___ \n"
-      	+ '- topics: '+topics.join(', ')+'\n'
-		+ '- adjectives: '+adjectives.join(', ')+'\n'
-		+ '- verbs: '+verbs.join(', ')+'\n'
+        bMsg +='todo-selector is: '+action2+' \n';
+        bMsg +="___ \n";
+      	bMsg += '- topics: '+topics.join(', ')+'\n';
+	bMsg += '- adjectives: '+adjectives.join(', ')+'\n';
+	bMsg += '- verbs: '+verbs.join(', ')+'\n';
 
-		+ '- nouns: '+nouns.join(', ')+'\n'
-		 + '- acronyms: '+acronyms.join(', ')+'\n'
-		+ '- conjunctions: '+conjunctions.join(', ')+'\n'
-		 + '___ \n content aif doc.out is= '+ dout.join(', ')+'\n';
+	bMsg += '- nouns: '+nouns.join(', ')+'\n';
+	bMsg += '- acronyms: '+acronyms.join(', ')+'\n';
+	bMsg += '- conjunctions: '+conjunctions.join(', ')+'\n';
+	bMsg +=  '___ \n content aif doc.out is= '+ dout.join(', ')+'\n';
+	bMsg +=  '___ \n';
+	bMsg += 'results in:'+rMsg;
 
       		inMsg.channel.send(blockQuote(bMsg));
     		}, 2000); // 2000 Millisekunden entsprechen 2 Sekunden
