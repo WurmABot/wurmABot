@@ -50,7 +50,7 @@ client.on(Events.MessageCreate, message => {
   let textToAnalyze;
   let inMsg= message.content;
   let bMsg = `I found the following keywords: `;
-  if (inMsg.startsWith(prefix1) || inMsg.startsWith(prefix)) {
+  if (inMsg.startsWith(prefix1) || inMsg.startsWith(prefix2)) {
   	if (inMsg.startsWith(prefix1)) {
     		textToAnalyze = inMsg.slice(prefix1.length).trim();
   	} else if (inMsg.startsWith(prefix2)) {
