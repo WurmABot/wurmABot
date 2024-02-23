@@ -16,7 +16,7 @@ const heyBot = require('./bot-module/heyBotCmd.js'); // the message ai of the bo
 // It makes some properties non-nullable.
 client.once(Events.ClientReady, readyClient => {
 	//console.log(chalk.green(`[Info]`)+` Ready! Logged in as ${readyClient.user.tag}`);
-	logger.info(chalk.green(`Ready!`)+ Logged in as ${readyClient.user.tag}`));
+	logger.info(chalk.green(`Ready!`)+` Logged in as ${readyClient.user.tag}`);
 });
 
 
