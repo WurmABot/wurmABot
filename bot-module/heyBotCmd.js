@@ -32,7 +32,7 @@ function heyBot(todo,inMsg,inGuild) {
 	ilog.info('[Hey Bot] call, todo:'+todo.join(', ')+', inMsg: '+inMsg.content);
 	var what=inMsg.content;
 	var doc=nlp(what);
-	let todoN = doc.after('^hey bot,');
+	let todoN = doc.after('^hey bot');
 	const dout=todoN.out('array');
   	const topics= todoN.topics().out('array');
 	const adjectives=todoN.adjectives().out('array');
@@ -41,6 +41,7 @@ function heyBot(todo,inMsg,inGuild) {
 	const acronyms=todoN.acronyms().out('array');
 	const conjunctions=todoN.conjunctions().out('array');
 	let action = todoN.verbs(0).normalize();
+	let action2 todoN.verbs(0).normalize.out('array);
 	//let action1 = action.conjugate()[0].Gerund;
 	//let action2 = action.conjugate()[1].toGerund();
 	
@@ -121,7 +122,7 @@ function heyBot(todo,inMsg,inGuild) {
     		setTimeout(() => {
 
 		var bMsg = 'your message contains the follow:\n';
-        bMsg +='todo-selector is: ${action.join(", ")} \n'
+        bMsg +='todo-selector is: '+action2.join(", ")+' \n'
         +"___ \n"
       	+ '- topics: '+topics.join(', ')+'\n'
 		+ '- adjectives: '+adjectives.join(', ')+'\n'
