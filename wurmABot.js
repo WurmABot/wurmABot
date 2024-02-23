@@ -97,7 +97,7 @@ client.on(Events.MessageCreate, message => {
 				});
 			}
 			else {
-				
+				message.channel.send('Can i help you?');
 			}
 		
 		//message.channel.send(chalk.orange("Information")+"Bot RoleBack.. i run only in basic mode.\n"+chalk.orange.bold("You enter: ")+message.content);
