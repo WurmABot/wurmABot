@@ -12,7 +12,7 @@ GameServers.set("Deliverance", { name: "Deliverance", short:"Del" ,founded:"2011
 GameServers.set("Exodus", { name: "Exodus", short:"Exo" , founded:"2011-09-15",size:"2048x2048",type:"pve-pvp-limited", cluster:"Southern Freedom Isles", address: "freedom003.game.wurmonline.com",yaga:"exodus.yaga.host"});
 GameServers.set("Celebration", { name: "Celebration", short:"Cel" ,founded:"2012-05-31",size:"2048x2048",type:"pve-pvp-limited", cluster:"Southern Freedom Isles", address: "celebration.live.wurmonline.io",yaga:"celebration.yaga.host"});
 GameServers.set("Pristine", { name: "Pristine", short:"Pri" ,founded:"2012-12-12",size:"2048x2048",type:"pve-pvp-limited", cluster:"Southern Freedom Isles", address: "freedom005.game.wurmonline.com",yaga:false});
-GameServers.set("Release", { name: "Release", short:"Rel" ,founded:"2014-07-03",size:"2048x2048",type:"pve-pvp-limited"," cluster:"Southern Freedom Isles", address: "freedom006.game.wurmonline.com",yaga:"release.yaga.host"});
+GameServers.set("Release", { name: "Release", short:"Rel" ,founded:"2014-07-03",size:"2048x2048",type:"pve-pvp-limited", cluster:"Southern Freedom Isles", address: "freedom006.game.wurmonline.com",yaga:"release.yaga.host"});
 GameServers.set("Xanadu", { name: "Xanadu", short:"Xan",founded:"2014-06-18",size:"8192x8192",type:"pve-pvp-limited", cluster:"Southern Freedom Isles", address: "freedom007.game.wurmonline.com",yaga:"xanadu.yaga.host"});
 GameServers.set("Chaos", { name: "Chaos", short:"Cha",founded:"2007-05-05",size:"4096x4096",type:"pve", cluster:"Southern Freedom Isles", address: "freedom007.game.wurmonline.com",yaga:"xanadu.yaga.host"});
 //Epic
