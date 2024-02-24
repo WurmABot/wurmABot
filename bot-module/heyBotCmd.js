@@ -3,7 +3,7 @@ const nlp = require('compromise');
 const fs =require('fs');
 const ilog= require('../logger/logger.js');
 // const { capitalize } = require('../utils.js');
-//const coreMap = require("../data/coreMap.js");
+const GameServers = require("../data/lib-gameserver.js");
 let gsData=new Map();
 let gObjects=new Map();
 let deeds = new Map();
@@ -28,8 +28,9 @@ function loadData(what=null,subname=null) {
 loadData("gsData");
 
 function heyBot(todo,inMsg,inGuild) {
-    loadData('gsData');
+    //loadData('gsData');
 	ilog.info('[Hey Bot] call, todo:'+todo.join(', ')+', inMsg: '+inMsg.content);
+	
 	var what=inMsg.content;
 	var doc=nlp(what);
 	let todoN = doc;
@@ -68,7 +69,7 @@ var showDevInfo=false;
 		    break;
 	case "is":
 		rMsg="Need to perfom is-Action";
-		showDevInfo==true;
+		showDevInfo=true;
 		break;
 	
         default:
