@@ -22,5 +22,5 @@ GameServers.set("Affliction", { name: "Affliction", short:"Aff", founded:"2014-1
 GameServers.set("Serenity", { name: "Serenity", short:"Ser" , founded:"2011-11-01",size:"2048x2048",type:"pve-kd-rating", cluster:"Epic Islands", address: "serenity.wurmonline.com",yaga:false});
 
 //console.log("size:" +GameServers.size +"," +GameServers.get("Harmony".name)); // 1
-module.exports=GameServers
+module.exports=GameServers;
 
