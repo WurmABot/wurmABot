@@ -74,6 +74,7 @@ var showDevInfo=false;
 	
         default:
             rMsg='My teacher didn\'t explain to me how to do it';
+	    showDevInfo=true;
         
     }
 
