@@ -1,11 +1,11 @@
 const GameServers = new Map();
 //NFI
 //yagaMapped
-GameServers.set("Harmony", { name: "Harmony", size="4096x4096",founded:"2020-07-24",type:"pve", short:"Har", cluster:"Northern Freedom Isles", address: "harmony.game.wurmonline.com",yaga:"harmony.yaga.host" });
-GameServers.set("Melody", { name: "Melody", size="2048x2048",founded:"2020-07-26",type:"pve", short:"Mel" , cluster:"Northern Freedom Isles", address: "melody.game.wurmonline.com",yaga:"meloddy.yaga.host" });
-GameServers.set("Cadence", { name: "Cadence", size="4096x4096", founded:"2020-08-21",type:"pve", short:"Cad" ,cluster:"Northern Freedom Isles", address: "cadence.game.wurmonline.com",yaga:"cadence.yaga.host" });
+GameServers.set("Harmony", { name: "Harmony", size:"4096x4096",founded:"2020-07-24",type:"pve", short:"Har", cluster:"Northern Freedom Isles", address: "harmony.game.wurmonline.com",yaga:"harmony.yaga.host" });
+GameServers.set("Melody", { name: "Melody", size:"2048x2048",founded:"2020-07-26",type:"pve", short:"Mel" , cluster:"Northern Freedom Isles", address: "melody.game.wurmonline.com",yaga:"meloddy.yaga.host" });
+GameServers.set("Cadence", { name: "Cadence", size:"4096x4096", founded:"2020-08-21",type:"pve", short:"Cad" ,cluster:"Northern Freedom Isles", address: "cadence.game.wurmonline.com",yaga:"cadence.yaga.host" });
 //others
-GameServers.set("Defiance", { name: "Defiance", size="4096x4096", short:"Def", founded:"2020-07-24", type:"pvp-own", cluster:"Northern Freedom Isles", address: "defiance.game.wurmonline.com",yaga:false });
+GameServers.set("Defiance", { name: "Defiance", size:"4096x4096", short:"Def", founded:"2020-07-24", type:"pvp-own", cluster:"Northern Freedom Isles", address: "defiance.game.wurmonline.com",yaga:false });
 //SFI
 GameServers.set("Independence", { name: "Independence", short:"Ind",founded:"2009-07-17",size:"4096x4096",type:"pve-pvp-limited", cluster:"Southern Freedom Isles", address: "freedom001.game.wurmonline.com",yaga:false });
 GameServers.set("Deliverance", { name: "Deliverance", short:"Del" ,founded:"2011-09-07",size:"2048x2048",type:"pve-pvp-limited", cluster:"Southern Freedom Isles", address: "freedom002.game.wurmonline.com",yaga:"deliverance.yaga.host"});
@@ -22,5 +22,7 @@ GameServers.set("Affliction", { name: "Affliction", short:"Aff", founded:"2014-1
 GameServers.set("Serenity", { name: "Serenity", short:"Ser" , founded:"2011-11-01",size:"2048x2048",type:"pve-kd-rating", cluster:"Epic Islands", address: "serenity.wurmonline.com",yaga:false});
 
 //console.log("size:" +GameServers.size +"," +GameServers.get("Harmony".name)); // 1
+if (!inBrowser) {
 module.exports=GameServers;
+}
 
