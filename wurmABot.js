@@ -1,35 +1,175 @@
-const { Client, Collection,Events,GatewayIntentBits, blockQuote} = require("discord.js");
-// Import Discord.Js.
+const fs = require('node:fs');
+const path = require('node:path');
+const { Client, Collection,Events,GatewayIntentBits, blockQuote, Shard} = require("discord.js");
 const client = new Client({ intents: [
 		GatewayIntentBits.Guilds,
 		GatewayIntentBits.GuildMessages,
 		GatewayIntentBits.MessageContent,
 		GatewayIntentBits.GuildMembers,
 	], });
-const chalk = require("chalk");
-const logger = require('./logger/logger.js');
-const nlp = require("compromise");
+const chalk = require("chalk"); // for colors in our Logger..
+const logger = require('./logger/logger.js'); // for Pino in Console Log..
+const nlp = require("compromise"); // WordHandling..
 const {heyBot} = require('./bot-module/heyBotCmd.js'); // the message ai of the bot...
-// Create a new client instance
-// When the client is ready, run this code (only once).
-// The distinction between `client: Client<boolean>` and `readyClient: Client<true>` is important for TypeScript developers.
-// It makes some properties non-nullable.
+/*
+ *
+ * Some Collections..
+ *
+ */
+
+client.cooldowns = new Collection();
+client.commands = new Collection();
+/*
+ *
+ * Some others.. :)
+ *
+ */
+
+let messageProcessed= new Set();
+let tempSet= new Map();
+export.modules=client;
+/*
+ *
+ *   EventHandlers..
+ *	Shards and Client defaults..
+ *
+*/
+
 client.once(Events.ClientReady, readyClient => {
 	//console.log(chalk.green(`[Info]`)+` Ready! Logged in as ${readyClient.user.tag}`);
-	logger.info(chalk.green(`Ready!`)+` Logged in as ${readyClient.user.tag}`);
+	logger.info("WurmABot (main): "+chalk.green(`Ready!`)+` Logged in as ${readyClient.user.tag}`);
+	tempSet.set('ClientData',readyClient.
+
 });
 
+client.once(Events.Disconnect, shardInfo => {
+	//console.log(chalk.green(`[Info]`)+` Ready! Logged in as ${readyClient.user.tag}`);
+	logger.error("WurmABot (main) - Shard #"+shardInfo.id+": "+chalk.red(`[Disconnect-Event] - handler undefined.`));
 
-client.commands = new Collection();
-client.aliases = new Collection();
-client.cooldowns = new Collection();
-client.slashCommands = new Collection();
-client.bottons= new Collection();
-client.messages= new Collection();
-client.selectMenus= new Collection();
-client.config = require("./bot-config/main.json");
-let messageProcessed= new Set();
+});
+client.once(Events.Death, shardInfo => {
+	//console.log(chalk.green(`[Info]`)+` Ready! Logged in as ${readyClient.user.tag}`);
+	logger.error("WurmABot (main) - Shard #"+shardInfo.id+": "+chalk.red(`[Death-Event] - handler undefined.`));
+});
+client.once(Events.Timeout, shardInfo => {
+	//console.log(chalk.green(`[Info]`)+` Ready! Logged in as ${readyClient.user.tag}`);
+	logger.error("WurmABot (main) - Shard #"+shardInfo.id+": "+chalk.red(`[Timeout-Event] - handler undefined.`));
+});
+client.once(Events.Respawn, shardInfo => {
+	//console.log(chalk.green(`[Info]`)+` Ready! Logged in as ${readyClient.user.tag}`);
+	logger.error("WurmABot (main) - Shard #"+shardInfo.id+": "+chalk.red(`[Respawn-Event] - handler undefined.`));
+	tempSet.set('shardId',shardInfo.id);
+});
+/*
+ *  scan BotCommands-Folder for matching files..
+ *
+ */
+const foldersPath = path.join(__dirname, 'botCmds');
+const commandFolders = fs.readdirSync(foldersPath);
 
+for (const folder of commandFolders) {
+	const commandsPath = path.join(foldersPath, folder);
+	const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
+	for (const file of commandFiles) {
+		const filePath = path.join(commandsPath, file);
+		const command = require(filePath);
+		if ('data' in command && 'execute' in command) {
+			client.commands.set(command.data.name, command);
+		} else {
+			logger.warn(`[WARNING:WurmABot.js] The command at ${filePath} is missing a required "data" or "execute" property.`);
+		}
+	}
+}
+/*
+ *
+ * Event Handlers -- the real actions..
+ * 1) InteractionCreate: Commands I/O of the Bot World..
+ *
+ */
+client.on(Events.InteractionCreate, interaction => {
+	if (!interaction.isChatInputCommand()) return;
+
+	const { commandName } = interaction;
+
+	if (!command) {
+		logger.error(`[WurmABot.js] No command matching ${interaction.commandName} was found.`);
+		return;
+	}
+
+	const { cooldowns } = interaction.client;
+	if (!cooldowns.has(command.data.name)) {
+		cooldowns.set(command.data.name, new Collection());
+	}
+
+	const now = Date.now();
+	const timestamps = cooldowns.get(command.data.name);
+	const defaultCooldownDuration = 3;
+	const cooldownAmount = (command.cooldown ?? defaultCooldownDuration) * 1000;
+
+	if (timestamps.has(interaction.user.id)) {
+		const expirationTime = timestamps.get(interaction.user.id) + cooldownAmount;
+
+		if (now < expirationTime) {
+			const expiredTimestamp = Math.round(expirationTime / 1000);
+			return interaction.reply({ content: `Please wait, you are on a cooldown for \`${command.data.name}\`. You can use it again <t:${expiredTimestamp}:R>.`, ephemeral: true });
+		}
+	}
+
+	timestamps.set(interaction.user.id, now);
+	setTimeout(() => timestamps.delete(interaction.user.id), cooldownAmount);
+
+	try {
+		await command.execute(interaction);
+	} catch (error) {
+		logger.error(error);
+		if (interaction.replied || interaction.deferred) {
+			await interaction.followUp({ content: '[WurmABot Error] \n There was an error while executing this command!', ephemeral: true });
+
+		} else {
+			await interaction.reply({ content: '[WurmABot Error] \n There was an error while executing this command!', ephemeral: true });
+		}
+	}
+
+
+	if (commandName === 'send') {
+		const id = interaction.options.getString('destination');
+
+		return client.shard.broadcastEval(async (c, { channelId }) => {
+			const channel = c.channels.cache.get(channelId);
+			if (channel) {
+				await channel.send(`[WurmABot Notice] \n This is a message from shard ${client.shard.ids.join(',')}!`);
+				return true;
+			}
+			return false;
+		}, { context: { channelId: id } })
+			.then(sentArray => {
+				if (!sentArray.includes(true)) {
+					return interaction.reply('[WurmABot Error] \n I could not find such a channel.');
+				}
+
+				return interaction.reply(`[WurmABot Notice] \n I have sent a message to channel: \`${id}\`!`);
+			});
+	}
+
+	if (commandName === 'emoji') {
+		const emojiNameOrId = interaction.options.getString('emoji');
+
+		return client.shard.broadcastEval(findEmoji, { context: { nameOrId: emojiNameOrId } })
+			.then(emojiArray => {
+				// Locate a non falsy result, which will be the emoji in question
+				const foundEmoji = emojiArray.find(emoji => emoji);
+				if (!foundEmoji) return interaction.reply('[WurmABot Notice] \n I could not find such an emoji.');
+				return interaction.reply(`[WurmABot Info] \n I have found the ${foundEmoji.animated ? `<${foundEmoji.identifier}>` : `<:${foundEmoji.identifier}> emoji!`}!`);
+			});
+	}
+});
+
+/*
+ *
+ * Event Handlers -- the real actions..
+ * 2) MessageCreate: Message I/O of the Bot World..
+ *
+ */
 
 client.on(Events.MessageCreate, message => {
            // Überprüfen, ob die Nachricht vom Bot stammt oder kein Text enthält
@@ -131,8 +271,14 @@ client.on(Events.MessageCreate, message => {
 // ———————————————[Logging Into Client]———————————————
 const token = process.env["DISCORD_TOKEN"] || client.config.DISCORD_TOKEN;
 
+/*
+ *
+ *
+ *      PROCESS HANDLERS..
+ *
+ *
+*/
 
-// Log in to Discord with your client's token
 client.login(token);
 if(token === ""){
    console.log("—————————————————————————————————");
@@ -148,12 +294,13 @@ if(token === ""){
 // Login The Bot.
 // ———————————————[Error Handling]———————————————
 process.on("unhandledRejection", (reason, p) => {
-	logger.level = 'trace';
+
+   logger.level = 'trace';
    logger.error("—————————————————————————————————");
    logger.error("[AntiCrash] : Unhandled Rejection/Catch");
    logger.error("—————————————————————————————————");
    logger.debug(reason, p);
-	logger.level = 'info';
+
 });
 process.on("uncaughtException", (err, origin) => {
    logger.level = 'trace';
@@ -161,7 +308,7 @@ process.on("uncaughtException", (err, origin) => {
    logger.error("[AntiCrash] : Uncaught Exception/Catch");
    logger.error("—————————————————————————————————");
    logger.debug(err, origin);
-   logger.level = 'info';
+
 });
 process.on("multipleResolves", (type, promise, reason) => {
 	logger.level = 'trace';
@@ -169,5 +316,5 @@ process.on("multipleResolves", (type, promise, reason) => {
    logger.error("[AntiCrash] : Multiple Resolves");
    logger.error("—————————————————————————————————");
    logger.debug(type, promise, reason);
-	logger.level = 'info';
+
 });
