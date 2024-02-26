@@ -1,56 +1,98 @@
 <!DOCTYPE html>
-<html lang="{{ site.lang | default: "en-US" }}">
+<html lang="de">
   <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-{% seo %}
-    <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
-    <!--[if lt IE 9]>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <![endif]-->
-    {% include head-custom.html %}
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <title>WurmABot</title>
   </head>
   <body>
-    <div class="wrapper">
-      <header>
-        <h1><a href="{{ "/" | absolute_url }}">{{ site.title | default: site.github.repository_name }}</a></h1>
-
-        {% if site.logo %}
-          <img src="{{site.logo | relative_url}}" alt="Logo" />
-        {% endif %}
-
-        <p>{{ site.description | default: site.github.project_tagline }}</p>
-
-        {% if site.github.is_project_page %}
-        <p class="view"><a href="{{ site.github.repository_url }}">View the Project on GitHub <small>{{ site.github.repository_nwo }}</small></a></p>
-        {% endif %}
-
-        {% if site.github.is_user_page %}
-        <p class="view"><a href="{{ site.github.owner_url }}">View My GitHub Profile</a></p>
-        {% endif %}
-
-        {% if site.show_downloads %}
-        <ul class="downloads">
-          <li><a href="{{ site.github.zip_url }}">Download <strong>ZIP File</strong></a></li>
-          <li><a href="{{ site.github.tar_url }}">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="{{ site.github.repository_url }}">View On <strong>GitHub</strong></a></li>
-        </ul>
-        {% endif %}
-      </header>
-      <section>
-
-      {{ content }}
-
-      </section>
-      <footer>
-        {% if site.github.is_project_page %}
-        <p>This project is maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a></p>
-        {% endif %}
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
+    <header class="fixed-top">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">WurmABot</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Welcome</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Interactions
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Conversation</a></li>
+            <li><a class="dropdown-item" href="#">Commands</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Management</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/" target="_blank">GitHub</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" aria-disabled="true">Languages</a>
+        </li>
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
     </div>
-    <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
+  </div>
+</nav>
+    </header>
+    <main class="container">
+    <div class="placeholder col-6" style="height: 50px;"></div>
+    <div class="container-fluid">
+      <div class="container row">&nbsp; </div>
+<div class="card">
+<div class="card-body">
+<h3 class="card-title">Technical Informations</h3>
+<div class="card-text">
+ <ul><li><b>Version:</b> 0.1.0.3-prerelease</li>
+ <li><b>Code-Language:</b> JavaScript (for Node.js)</li>
+ <li><ul><b>Dependencies:</B>
+  <li>Node.js >= 18.x</li>
+  <li>Discord.js >= 14.x</li>
+  <li>Chalk  >= 4.x</li>
+  <li>Pino >= 10.x</li>
+  <li>Compromise >= 3.x</li>
+   </ul></li>
+   </div>
+
+</div>
+</div>
+<div class="placeholder"></div>
+
+  <div class="card">
+        <div class="card-body">
+        <h3 class="card-title">Welcome</h3>
+        <div class="card-text">
+        <p class="lead">.. to the Homepage of WurmABot. A Discord-Bot for Discord-Servers with the topic of the Game "WurmOnline". Primary is this bot oriented to the PvE-GameMode.</p>
+
+          <button type="button" class="btn btn-primary btn-lg px-4 me-md-2" onclick="window.open('https://www.wurmonline.com/')">Goto WurmOnline</a></button>
+          <button type="button" class="btn btn-outline-secondary btn-lg px-4" onclick="window.open('https://www.discord.com/')">Goto Discord</button>
+
+      </div>
+    </div>
+  </div>
+
+
+    </main>
+   <footer class="container row fixed-bottom text-center"><i>WurmABot &copy; since 2024 Thorsten Lauer, Trier - Germany. All Rights reserved.</i><br/>
+   <small><b>WurmOnline</b> is a Game of <b>Code Club AB</b> (Sweden) -- <b>Discord</b> is a Software from <b>Discord Inc.</b> (USA)</small>
+   </footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
   </body>
 </html>
